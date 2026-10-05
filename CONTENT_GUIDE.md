@@ -80,14 +80,14 @@ Replace each project with your real projects:
 ```
 
 **Current placeholders:**
-1. Codex - Knowledge base (Web) - ✅ Already detailed
-2. Nexus Workspace - Workspace platform (Web) - ✅ Already detailed
-3. Meridian Hospital - Hospital website (Web) - ✅ Already detailed
-4. Ironmark Construction - Construction company (Web) - ✅ Already detailed
-5. Orbit Market - Marketplace (Web)
-6. Fieldnotes - Journaling app (Mobile)
-7. Lumen AI - Writing assistant (AI)
-8. GridOps - Monitoring dashboard (Systems)
+1. Aetheris - Blockchain Layer-1 (Web) - ✅ Already detailed
+2. Codex - Knowledge base (Web) - ✅ Already detailed
+3. Nexus Workspace - Workspace platform (Web) - ✅ Already detailed
+4. Meridian Hospital - Hospital website (Web) - ✅ Already detailed
+5. Ironmark Construction - Construction company (Web) - ✅ Already detailed
+6. Orbit Market - Marketplace (Web)
+7. Fieldnotes - Journaling app (Mobile)
+8. Lumen AI - Writing assistant (AI)
 
 ---
 
@@ -155,11 +155,12 @@ Each case study needs:
 ```
 
 **Current case studies:**
-1. Codex (Web) - ✅ Already detailed
-2. Nexus Workspace (Web) - ✅ Already detailed
-3. Meridian Hospital (Web) - ✅ Already detailed
-4. Ironmark Construction (Web) - ✅ Already detailed
-5. Orbit Market (Web)
+1. Aetheris (Web) - ✅ Already detailed
+2. Codex (Web) - ✅ Already detailed
+3. Nexus Workspace (Web) - ✅ Already detailed
+4. Meridian Hospital (Web) - ✅ Already detailed
+5. Ironmark Construction (Web) - ✅ Already detailed
+6. Orbit Market (Web)
 
 ---
 
@@ -263,6 +264,68 @@ export const bio = "I'm Mayor, a full-stack developer...";
 1. Start small
 2. Stay close
 3. Leave it better
+
+---
+
+## ⛓️ Aetheris Blockchain (Special Project)
+
+**Location:** `aetheris` object
+
+This project has additional detailed content:
+
+```typescript
+export const aetheris = {
+  liveUrl: "https://aetheris-blockchain.vercel.app/",
+  productName: "AETHERIS",
+  ticker: "AETH",
+  tagline: "The foundational Layer-1 for the next internet.",
+  description: "Parallel execution. Zero-knowledge settlement. Sequencing nobody owns.",
+  manifesto: ["Blocks are a bottleneck.", "Proofs are the new trust.", "Order belongs to everyone."],
+  
+  liveStats: [                       // → 4 live-looking stats
+    { value: "184k", label: "TPS", detail: "Sustained, parallel lanes" },
+    // ...
+  ],
+  
+  pillars: [                         // → 3 technical pillars
+    {
+      glyph: "||",
+      title: "Parallel execution",
+      line: "Transactions that don't touch each other don't wait for each other."
+    },
+    // ...
+  ],
+  
+  ecosystem: [                       // → 6 ecosystem projects
+    {
+      name: "Orbitex",
+      category: "DeFi",
+      line: "A spot DEX with zero-slippage batch auctions.",
+      status: "Live"                 // → "Live" | "Beta" | "Soon"
+    },
+    // ...
+  ],
+  
+  governance: [                      // → 4 governance proposals
+    {
+      id: "AIP-052",
+      title: "Raise lane cap from 192 to 256",
+      status: "Voting",              // → "Voting" | "Passed" | "Executed" | "Rejected"
+      for: 71,
+      against: 22
+    },
+    // ...
+  ],
+  
+  tokenomics: {
+    total: "1B AETH",
+    allocation: [                    // → 5 allocation categories
+      { label: "Community and rewards", pct: 38 },
+      // ...
+    ]
+  }
+};
+```
 
 ---
 

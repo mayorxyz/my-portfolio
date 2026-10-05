@@ -50,6 +50,7 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  { slug: "aetheris", title: "Aetheris", category: "Web", year: "2026", tagline: "The foundational Layer-1 for the next internet.", tags: ["React", "TypeScript", "Tailwind", "Web3"], panelColor: "#0a0a0a", role: "Lead developer & designer", summary: "Designed and built a cinematic, mythic website for a fictional Layer-1 blockchain. Features live stats, technical pillars, ecosystem showcase, developer docs, and governance interface." },
   { slug: "codex", title: "Codex", category: "Web", year: "2026", tagline: "A knowledge base that lives in your browser and compiles your notes on the fly.", tags: ["React", "TypeScript", "Vite", "Tailwind"], panelColor: "#c8bdf0", role: "Developer and designer", summary: "Built a fast, private knowledge base with full-text search, syntax highlighting, and a single render pipeline. Zero backend — everything runs in the browser with localStorage persistence." },
   { slug: "nexus-workspace", title: "Nexus Workspace", category: "Web", year: "2026", tagline: "A premium dark workspace where fast teams stop losing the plot.", tags: ["React", "TypeScript", "Tailwind", "Supabase"], panelColor: "#0a0a0a", role: "Lead developer & designer", summary: "Built a workspace and analytics platform with drag-and-drop boards, live dashboards, and real-time sync. Premium dark UI with smooth animations and a focus on developer experience." },
   { slug: "meridian-hospital", title: "Meridian Hospital", category: "Web", year: "2025", tagline: "Clinical trust, designed — a teaching hospital's digital front door.", tags: ["React", "TypeScript", "Tailwind", "Vite"], panelColor: "#1d2b47", role: "Lead developer & designer", summary: "Designed and built a patient-focused website for MERIDIAN General Hospital. Features a cost estimator, doctor directory, department showcase, and a calm, trustworthy design language." },
@@ -86,6 +87,53 @@ export interface CaseStudy {
 }
 
 export const caseStudies: CaseStudy[] = [
+  {
+    slug: "aetheris",
+    title: "Aetheris",
+    category: "Web",
+    year: "2026",
+    stack: ["React", "TypeScript", "Tailwind", "Framer Motion"],
+    timeline: "Design concept",
+    platform: "Web",
+    role: "Lead developer & designer",
+    problem: "Blockchain websites often feel either too technical for newcomers or too vague for developers. The challenge was to create a cinematic, mythic experience that communicates complex Layer-1 concepts (parallel execution, ZK proofs, decentralized sequencing) while maintaining the gravitas of a foundational protocol.",
+    approach: [
+      "Designed a terse, transmission-like voice that treats the visitor as an insider receiving signal, not a customer reading marketing copy. Every word earns its place.",
+      "Built live-looking stats and network visualizations that convey scale and activity without requiring real blockchain data. The interface feels alive.",
+      "Created a multi-section experience (Technology, Tokenomics, Ecosystem, Developers, Governance) that progressively reveals the protocol's depth while keeping each section self-contained.",
+    ],
+    architectureNodes: [
+      { id: "hero", label: "Hero + Stats", x: 100, y: 100 },
+      { id: "pillars", label: "Tech Pillars", x: 300, y: 100 },
+      { id: "tokenomics", label: "Tokenomics", x: 500, y: 100 },
+      { id: "ecosystem", label: "Ecosystem", x: 100, y: 300 },
+      { id: "developers", label: "Developers", x: 300, y: 300 },
+      { id: "governance", label: "Governance", x: 500, y: 300 },
+    ],
+    architectureEdges: [["hero", "pillars"], ["pillars", "tokenomics"], ["hero", "ecosystem"], ["ecosystem", "developers"], ["developers", "governance"]],
+    stats: [
+      { value: "184k", label: "Simulated TPS" },
+      { value: "0.8s", label: "Finality time" },
+      { value: "6", label: "Sections" },
+    ],
+    chartA: [
+      { month: "Jan", value: 0 }, { month: "Feb", value: 0 }, { month: "Mar", value: 0 },
+      { month: "Apr", value: 0 }, { month: "May", value: 0 }, { month: "Jun", value: 0 },
+      { month: "Jul", value: 0 }, { month: "Aug", value: 0 }, { month: "Sep", value: 0 },
+      { month: "Oct", value: 0 }, { month: "Nov", value: 0 }, { month: "Dec", value: 0 },
+    ],
+    chartB: [
+      { category: "Speed", value: 100 }, { category: "A11y", value: 95 },
+      { category: "Best Prac", value: 100 }, { category: "SEO", value: 90 },
+      { category: "PWA", value: 85 },
+    ],
+    nextSteps: [
+      "Add real-time blockchain data integration",
+      "Implement wallet connection for governance voting",
+      "Build interactive tokenomics calculator",
+    ],
+    panelColor: "#0a0a0a",
+  },
   {
     slug: "codex",
     title: "Codex",
@@ -441,6 +489,51 @@ export const principles = [
   { label: "Measure first", sentence: "Decisions start with data, not opinions." },
   { label: "Write it down", sentence: "If it isn't documented, it doesn't exist." },
 ];
+
+// ─── AETHERIS BLOCKCHAIN ─────────────────────────────────
+export const aetheris = {
+  liveUrl: "https://aetheris-blockchain.vercel.app/",
+  productName: "AETHERIS",
+  ticker: "AETH",
+  tagline: "The foundational Layer-1 for the next internet.",
+  description: "Parallel execution. Zero-knowledge settlement. Sequencing nobody owns. Built for the day a billion people show up.",
+  manifesto: ["Blocks are a bottleneck.", "Proofs are the new trust.", "Order belongs to everyone."],
+  liveStats: [
+    { value: "184k", label: "TPS", detail: "Sustained, parallel lanes" },
+    { value: "0.8s", label: "Finality", detail: "Proof-settled" },
+    { value: "$0.0004", label: "Median fee", detail: "Not a typo" },
+    { value: "4,210", label: "Validators", detail: "Across 96 countries" },
+  ],
+  pillars: [
+    { glyph: "||", title: "Parallel execution", line: "Transactions that don't touch each other don't wait for each other." },
+    { glyph: "ZK", title: "Zero-knowledge settlement", line: "Prove it once. Verify it anywhere. Trust the math, not the middleman." },
+    { glyph: "◇", title: "Decentralised sequencing", line: "No single operator decides what goes first. The network does." },
+  ],
+  ecosystem: [
+    { name: "Orbitex", category: "DeFi", line: "A spot DEX with zero-slippage batch auctions.", status: "Live" },
+    { name: "Lumen Lend", category: "DeFi", line: "Lending markets that settle in under a second.", status: "Live" },
+    { name: "Voidrunners", category: "Gaming", line: "An on-chain space sim with 10,000 concurrent pilots.", status: "Beta" },
+    { name: "Proofworks", category: "Infrastructure", line: "Prover-as-a-service for teams that don't run hardware.", status: "Live" },
+    { name: "Sigil", category: "Identity", line: "Private credentials you prove without revealing.", status: "Live" },
+    { name: "Halo", category: "Social", line: "A feed you own, with portable followers.", status: "Beta" },
+  ],
+  governance: [
+    { id: "AIP-052", title: "Raise lane cap from 192 to 256", status: "Voting", for: 71, against: 22 },
+    { id: "AIP-051", title: "Fund the Prover Open Hardware program", status: "Voting", for: 58, against: 35 },
+    { id: "AIP-050", title: "Reduce minimum validator stake by 15%", status: "Passed", for: 66, against: 28 },
+    { id: "AIP-049", title: "Add encrypted mempool v2", status: "Executed", for: 83, against: 11 },
+  ],
+  tokenomics: {
+    total: "1B AETH",
+    allocation: [
+      { label: "Community and rewards", pct: 38 },
+      { label: "Ecosystem fund", pct: 20 },
+      { label: "Core contributors", pct: 18 },
+      { label: "Investors", pct: 14 },
+      { label: "Foundation reserve", pct: 10 },
+    ],
+  },
+};
 
 // ─── CODEX KNOWLEDGE BASE ────────────────────────────────
 export const codex = {
