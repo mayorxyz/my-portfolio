@@ -183,11 +183,11 @@ export const personalInfo = {
 - **Page transitions** — 250ms fade between routes
 - **Floating navigation** — Fixed bottom pill nav, hides on footer
 - **Skip link** — Accessibility-first skip to content
-- **Live preview** — Ironmark & Meridian projects include iframe previews of the real sites
+- **Live preview** — Ironmark, Meridian & Nexus projects include iframe previews of the real sites
 - **Inline SVG charts** — Line and bar charts with animations
 - **Architecture diagrams** — SVG node/edge graphs
 - **Form validation** — Client-side validation with success state
-- **Featured project showcases** — Ironmark Construction & Meridian Hospital with custom sections (departments, doctors, services, values)
+- **Featured project showcases** — Ironmark Construction, Meridian Hospital & Nexus Workspace with custom sections (departments, doctors, services, values, features, testimonials, pricing)
 
 ## 🔧 Customization
 

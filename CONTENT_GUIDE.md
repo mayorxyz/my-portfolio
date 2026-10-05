@@ -80,16 +80,14 @@ Replace each project with your real projects:
 ```
 
 **Current placeholders:**
-1. Orbit Market - Marketplace (Web)
-2. Fieldnotes - Journaling app (Mobile)
-3. Lumen AI - Writing assistant (AI)
-4. GridOps - Monitoring dashboard (Systems)
-5. Canopy CMS - Headless CMS (Web)
-6. Pulse Analytics - Analytics dashboard (AI)
-7. TerraVault - Encrypted storage (Systems)
-8. Harbor - Safety network (Mobile)
-
-**Note:** Ironmark Construction is already included as the first project.
+1. Nexus Workspace - Workspace platform (Web) - ✅ Already detailed
+2. Meridian Hospital - Hospital website (Web) - ✅ Already detailed
+3. Ironmark Construction - Construction company (Web) - ✅ Already detailed
+4. Orbit Market - Marketplace (Web)
+5. Fieldnotes - Journaling app (Mobile)
+6. Lumen AI - Writing assistant (AI)
+7. GridOps - Monitoring dashboard (Systems)
+8. Canopy CMS - Headless CMS (Web)
 
 ---
 
@@ -157,9 +155,10 @@ Each case study needs:
 ```
 
 **Current case studies:**
-1. Meridian Hospital (Web) - ✅ Already detailed
-2. Ironmark Construction (Web) - ✅ Already detailed
-3. Orbit Market (Web)
+1. Nexus Workspace (Web) - ✅ Already detailed
+2. Meridian Hospital (Web) - ✅ Already detailed
+3. Ironmark Construction (Web) - ✅ Already detailed
+4. Orbit Market (Web)
 
 ---
 
@@ -263,6 +262,57 @@ export const bio = "I'm Mayor, a full-stack developer...";
 1. Start small
 2. Stay close
 3. Leave it better
+
+---
+
+## 🚀 Nexus Workspace (Special Project)
+
+**Location:** `nexus` object
+
+This project has additional detailed content:
+
+```typescript
+export const nexus = {
+  liveUrl: "https://nexus-startup-pi.vercel.app/",
+  productName: "Nexus",
+  tagline: "Where fast teams stop losing the plot.",
+  description: "A workspace and analytics platform for fast-moving teams.",
+  
+  stats: [                           // → 4 platform metrics
+    { value: "12k+", label: "Teams onboard" },
+    // ...
+  ],
+  
+  features: [                        // → 6 key features
+    {
+      icon: "layout-grid",           // → "layout-grid" | "bar-chart-3" | "shield-check" | "zap" | "sparkles" | "party-popper"
+      title: "Drag-and-drop boards",
+      blurb: "Move work around like it's a deck of cards."
+    },
+    // ...
+  ],
+  
+  testimonials: [                    // → 4 customer testimonials
+    {
+      name: "Amaka Eze",
+      role: "Founder, Loopwise",
+      quote: "We cancelled three tools the week we moved to Nexus."
+    },
+    // ...
+  ],
+  
+  pricing: [                         // → 3 pricing tiers
+    {
+      name: "Starter",
+      price: "Free",
+      blurb: "For solo builders and small experiments.",
+      features: ["Up to 3 members", "2 boards", "Basic dashboards"],
+      highlight: false               // → true for highlighted plan
+    },
+    // ...
+  ]
+};
+```
 
 ---
 

@@ -50,6 +50,7 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  { slug: "nexus-workspace", title: "Nexus Workspace", category: "Web", year: "2026", tagline: "A premium dark workspace where fast teams stop losing the plot.", tags: ["React", "TypeScript", "Tailwind", "Supabase"], panelColor: "#0a0a0a", role: "Lead developer & designer", summary: "Built a workspace and analytics platform with drag-and-drop boards, live dashboards, and real-time sync. Premium dark UI with smooth animations and a focus on developer experience." },
   { slug: "meridian-hospital", title: "Meridian Hospital", category: "Web", year: "2025", tagline: "Clinical trust, designed — a teaching hospital's digital front door.", tags: ["React", "TypeScript", "Tailwind", "Vite"], panelColor: "#1d2b47", role: "Lead developer & designer", summary: "Designed and built a patient-focused website for MERIDIAN General Hospital. Features a cost estimator, doctor directory, department showcase, and a calm, trustworthy design language." },
   { slug: "ironmark-construction", title: "Ironmark Construction", category: "Web", year: "2025", tagline: "A bold digital presence for 25 years of building what stays standing.", tags: ["React", "TypeScript", "Tailwind", "Vite"], panelColor: "#1d2b47", role: "Lead developer & designer", summary: "Designed and built a full marketing website for Ironmark Construction Group. Editorial style, component architecture, and a live preview that lets visitors explore the real site." },
   { slug: "orbit-market", title: "Orbit Market", category: "Web", year: "2026", tagline: "A peer-to-peer marketplace for local artisans and makers.", tags: ["React", "Node", "Postgres", "Stripe"], panelColor: "#e8855a", role: "Lead developer", summary: "Built a marketplace connecting 200+ local artisans with buyers. Focused on fast load times, simple checkout, and a clean seller dashboard." },
@@ -84,6 +85,53 @@ export interface CaseStudy {
 }
 
 export const caseStudies: CaseStudy[] = [
+  {
+    slug: "nexus-workspace",
+    title: "Nexus Workspace",
+    category: "Web",
+    year: "2026",
+    stack: ["React", "TypeScript", "Tailwind", "Supabase"],
+    timeline: "3 months",
+    platform: "Web",
+    role: "Lead developer & designer",
+    problem: "Fast-moving startups were juggling 5+ tools for project management, analytics, and team communication. Context-switching was killing productivity, and existing tools felt either too simple or too enterprise. Teams needed a single, beautiful workspace that could handle both tasks and metrics without compromise.",
+    approach: [
+      "Designed a premium dark-first interface that feels like a tool built by developers, for developers. Every interaction is smooth, every animation earns its place, and the UI gets out of the way when you need to focus.",
+      "Built real-time collaboration from day one using Supabase. Multiple team members can edit boards, view dashboards, and see updates instantly without refresh. Presence indicators show who's online.",
+      "Created a modular component system that makes the interface feel cohesive across boards, dashboards, and settings. The same design language applies everywhere, so the tool feels familiar no matter where you are.",
+    ],
+    architectureNodes: [
+      { id: "client", label: "React SPA", x: 100, y: 200 },
+      { id: "router", label: "React Router", x: 280, y: 200 },
+      { id: "state", label: "Zustand State", x: 450, y: 120 },
+      { id: "supabase", label: "Supabase", x: 450, y: 280 },
+      { id: "realtime", label: "Realtime Sync", x: 280, y: 60 },
+      { id: "auth", label: "Auth & RLS", x: 280, y: 340 },
+    ],
+    architectureEdges: [["client", "router"], ["router", "state"], ["state", "supabase"], ["client", "realtime"], ["supabase", "auth"]],
+    stats: [
+      { value: "100%", label: "Mobile responsive" },
+      { value: "98+", label: "Lighthouse score" },
+      { value: "3mo", label: "Delivery time" },
+    ],
+    chartA: [
+      { month: "Jan", value: 0 }, { month: "Feb", value: 25 }, { month: "Mar", value: 55 },
+      { month: "Apr", value: 72 }, { month: "May", value: 85 }, { month: "Jun", value: 92 },
+      { month: "Jul", value: 95 }, { month: "Aug", value: 97 }, { month: "Sep", value: 98 },
+      { month: "Oct", value: 98 }, { month: "Nov", value: 98 }, { month: "Dec", value: 98 },
+    ],
+    chartB: [
+      { category: "Speed", value: 99 }, { category: "A11y", value: 100 },
+      { category: "Best Prac", value: 100 }, { category: "SEO", value: 95 },
+      { category: "PWA", value: 92 },
+    ],
+    nextSteps: [
+      "Add API integrations with GitHub, Slack, and Linear",
+      "Build mobile apps for iOS and Android",
+      "Implement advanced analytics with custom queries",
+    ],
+    panelColor: "#0a0a0a",
+  },
   {
     slug: "meridian-hospital",
     title: "MERIDIAN General Hospital",
@@ -343,6 +391,39 @@ export const principles = [
   { label: "Measure first", sentence: "Decisions start with data, not opinions." },
   { label: "Write it down", sentence: "If it isn't documented, it doesn't exist." },
 ];
+
+// ─── NEXUS WORKSPACE ─────────────────────────────────────
+export const nexus = {
+  liveUrl: "https://nexus-startup-pi.vercel.app/",
+  productName: "Nexus",
+  tagline: "Where fast teams stop losing the plot.",
+  description: "A workspace and analytics platform for fast-moving teams. Tasks, metrics and team updates in one place.",
+  stats: [
+    { value: "12k+", label: "Teams onboard" },
+    { value: "4.9/5", label: "Average rating" },
+    { value: "38%", label: "Fewer status meetings" },
+    { value: "99.9%", label: "Uptime" },
+  ],
+  features: [
+    { icon: "layout-grid", title: "Drag-and-drop boards", blurb: "Move work around like it's a deck of cards." },
+    { icon: "bar-chart-3", title: "Live dashboards", blurb: "Numbers that update before you finish your coffee." },
+    { icon: "shield-check", title: "Secure by default", blurb: "Sign in once. Sleep well." },
+    { icon: "zap", title: "Real-time sync", blurb: "Everyone sees the same thing, right now." },
+    { icon: "sparkles", title: "Interface that feels good", blurb: "Smooth scrolling and tiny animations." },
+    { icon: "party-popper", title: "Celebrate the wins", blurb: "Ship something? Here's some confetti." },
+  ],
+  testimonials: [
+    { name: "Amaka Eze", role: "Founder, Loopwise", quote: "We cancelled three tools the week we moved to Nexus. Nobody missed them." },
+    { name: "Daniel Reyes", role: "CTO, Pixelforge", quote: "The board is so smooth my team now drags things around just for fun." },
+    { name: "Sofia Lindgren", role: "Head of Ops, Quanta", quote: "Our Monday status meeting went from an hour to fifteen minutes." },
+    { name: "Tunde Bakare", role: "Product Lead, Orbitly", quote: "It's the first tool where dark mode looks designed, not just inverted." },
+  ],
+  pricing: [
+    { name: "Starter", price: "Free", blurb: "For solo builders and small experiments.", features: ["Up to 3 members", "2 boards", "Basic dashboards"] },
+    { name: "Pro", price: "$19/mo", blurb: "For teams that ship every week.", features: ["Up to 25 members", "Unlimited boards", "Live dashboards", "Real-time sync"], highlight: true },
+    { name: "Scale", price: "$49/mo", blurb: "For growing companies with grown-up needs.", features: ["Unlimited members", "Role-based access", "Advanced analytics", "Custom integrations"] },
+  ],
+};
 
 // ─── MERIDIAN GENERAL HOSPITAL ───────────────────────────
 export const meridian = {
