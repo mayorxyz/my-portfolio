@@ -80,14 +80,14 @@ Replace each project with your real projects:
 ```
 
 **Current placeholders:**
-1. Aetheris - Blockchain Layer-1 (Web) - ✅ Already detailed
-2. Codex - Knowledge base (Web) - ✅ Already detailed
-3. Nexus Workspace - Workspace platform (Web) - ✅ Already detailed
-4. Meridian Hospital - Hospital website (Web) - ✅ Already detailed
-5. Ironmark Construction - Construction company (Web) - ✅ Already detailed
-6. Orbit Market - Marketplace (Web)
-7. Fieldnotes - Journaling app (Mobile)
-8. Lumen AI - Writing assistant (AI)
+1. Ledgerline - Personal finance OS (Web) - ✅ Already detailed
+2. Aetheris - Blockchain Layer-1 (Web) - ✅ Already detailed
+3. Codex - Knowledge base (Web) - ✅ Already detailed
+4. Nexus Workspace - Workspace platform (Web) - ✅ Already detailed
+5. Meridian Hospital - Hospital website (Web) - ✅ Already detailed
+6. Ironmark Construction - Construction company (Web) - ✅ Already detailed
+7. Orbit Market - Marketplace (Web)
+8. Fieldnotes - Journaling app (Mobile)
 
 ---
 
@@ -155,12 +155,13 @@ Each case study needs:
 ```
 
 **Current case studies:**
-1. Aetheris (Web) - ✅ Already detailed
-2. Codex (Web) - ✅ Already detailed
-3. Nexus Workspace (Web) - ✅ Already detailed
-4. Meridian Hospital (Web) - ✅ Already detailed
-5. Ironmark Construction (Web) - ✅ Already detailed
-6. Orbit Market (Web)
+1. Ledgerline (Web) - ✅ Already detailed
+2. Aetheris (Web) - ✅ Already detailed
+3. Codex (Web) - ✅ Already detailed
+4. Nexus Workspace (Web) - ✅ Already detailed
+5. Meridian Hospital (Web) - ✅ Already detailed
+6. Ironmark Construction (Web) - ✅ Already detailed
+7. Orbit Market (Web)
 
 ---
 
@@ -264,6 +265,67 @@ export const bio = "I'm Mayor, a full-stack developer...";
 1. Start small
 2. Stay close
 3. Leave it better
+
+---
+
+## 💰 Ledgerline Finance OS (Special Project)
+
+**Location:** `ledgerline` object
+
+This project has additional detailed content:
+
+```typescript
+export const ledgerline = {
+  liveUrl: "https://finance-beta-jade-28.vercel.app/",
+  productName: "Ledgerline",
+  tagline: "Your money, minus the mystery.",
+  description: "A personal finance OS that tracks accounts, transactions, goals, and analytics.",
+  user: { name: "Tobi Adebayo", initials: "TA", plan: "Demo account" },
+  
+  accounts: [                        // → 4 financial accounts
+    {
+      name: "Everyday Checking",
+      institution: "Harbor Credit Union",
+      type: "checking",              // → "checking" | "savings" | "credit" | "investment"
+      balance: "$4,286.50",
+      trend: "+2.4%",
+      mask: "4821"
+    },
+    // ...
+  ],
+  
+  categories: [                      // → 6 spending categories
+    {
+      name: "Housing",
+      color: "#2f6f8f",              // → Category color (hex)
+      budget: "$1,400",
+      quip: "Four walls, one landlord."
+    },
+    // ...
+  ],
+  
+  goals: [                           // → 4 savings goals
+    {
+      name: "Emergency fund",
+      target: "$15,000",
+      saved: "$12,840",
+      pct: 86,                       // → Progress percentage (0-100)
+      deadline: "Dec 2026",
+      nudge: "Nearly there. Future you is already relaxed."
+    },
+    // ...
+  ],
+  
+  analytics: [                       // → 4 KPI metrics
+    {
+      label: "Net worth",
+      value: "$44,462",
+      note: "Everything you own minus everything you owe"
+    },
+    // ...
+  ]
+};
+```
 
 ---
 

@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { SectionHeader, PillTag, TextLink, Reveal } from "../components/ui";
-import { caseStudies, projects, ironmark, meridian, nexus, codex, aetheris } from "../content";
-import { Building, Factory, Home, Route, Heart, Brain, Bone, Baby, HeartHandshake, Ribbon, Siren, ScanLine, LayoutGrid, BarChart3, ShieldCheck, Zap, Sparkles, PartyPopper, Search, Tags, ListTree, Copy, Moon, Download, Network, Shield, Layers } from "lucide-react";
+import { caseStudies, projects, ironmark, meridian, nexus, codex, aetheris, ledgerline } from "../content";
+import { Building, Factory, Home, Route, Heart, Brain, Bone, Baby, HeartHandshake, Ribbon, Siren, ScanLine, LayoutGrid, BarChart3, ShieldCheck, Zap, Sparkles, PartyPopper, Search, Tags, ListTree, Copy, Moon, Download, Network, Shield, Layers, Wallet, TrendingUp, Target, DollarSign } from "lucide-react";
 
 function DeviceMockup({ color, title }: { color: string; title: string }) {
   return (
@@ -1019,6 +1019,188 @@ function AetherisTokenomics() {
   );
 }
 
+function LedgerlineCover() {
+  return (
+    <div className="rounded-panel overflow-hidden relative bg-tile-mint" style={{ aspectRatio: "16/9" }}>
+      <svg viewBox="0 0 800 450" className="w-full h-full" aria-label="Ledgerline finance dashboard illustration">
+        <rect width="800" height="450" fill="#a9d6c9" />
+        
+        {/* Dashboard cards */}
+        <rect x="60" y="80" width="200" height="120" rx="12" fill="#f1efe7" />
+        <rect x="280" y="80" width="200" height="120" rx="12" fill="#f1efe7" />
+        <rect x="500" y="80" width="200" height="120" rx="12" fill="#f1efe7" />
+        
+        {/* Account balances */}
+        <text x="80" y="110" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#6b6a64">CHECKING</text>
+        <text x="80" y="140" fontFamily="Instrument Serif, serif" fontSize="28" fill="#141414">$4,286</text>
+        <text x="80" y="165" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#0f9d8a">+2.4%</text>
+        
+        <text x="300" y="110" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#6b6a64">SAVINGS</text>
+        <text x="300" y="140" fontFamily="Instrument Serif, serif" fontSize="28" fill="#141414">$12,840</text>
+        <text x="300" y="165" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#0f9d8a">+5.1%</text>
+        
+        <text x="520" y="110" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#6b6a64">INVESTMENTS</text>
+        <text x="520" y="140" fontFamily="Instrument Serif, serif" fontSize="28" fill="#141414">$28,460</text>
+        <text x="520" y="165" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#0f9d8a">+8.7%</text>
+        
+        {/* Chart area */}
+        <rect x="60" y="230" width="640" height="160" rx="12" fill="#f1efe7" />
+        <text x="80" y="260" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#6b6a64">CASH FLOW</text>
+        
+        {/* Line chart */}
+        <path d="M 100 320 Q 200 280, 300 300 T 500 290 T 650 270" fill="none" stroke="#0f9d8a" strokeWidth="2" />
+        <path d="M 100 340 Q 200 320, 300 330 T 500 320 T 650 310" fill="none" stroke="#e07a3f" strokeWidth="2" opacity="0.6" />
+        
+        {/* Legend */}
+        <circle cx="580" cy="255" r="4" fill="#0f9d8a" />
+        <text x="590" y="260" fontFamily="JetBrains Mono, monospace" fontSize="9" fill="#6b6a64">IN</text>
+        <circle cx="630" cy="255" r="4" fill="#e07a3f" />
+        <text x="640" y="260" fontFamily="JetBrains Mono, monospace" fontSize="9" fill="#6b6a64">OUT</text>
+        
+        {/* HUD labels */}
+        <text x="40" y="40" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#141414" opacity="0.6">LEDGERLINE</text>
+        <text x="40" y="56" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#141414" opacity="0.6">DEMO ACCOUNT</text>
+        <text x="640" y="40" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#141414" opacity="0.6">NET: $44,462</text>
+        <text x="640" y="430" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#141414" opacity="0.6">SAVINGS: 31%</text>
+      </svg>
+    </div>
+  );
+}
+
+function LedgerlineLivePreview() {
+  return (
+    <div className="mt-12">
+      <SectionHeader number="07" name="Live preview" />
+      <div className="border border-line rounded-panel overflow-hidden">
+        <div className="bg-ink text-paper px-6 py-3 flex items-center justify-between">
+          <span className="font-mono text-[10px] uppercase tracking-[0.12em]">finance-beta-jade-28.vercel.app</span>
+          <a
+            href={ledgerline.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-mono text-[10px] uppercase tracking-[0.12em] text-accent hover:underline"
+          >
+            Open in new tab ↗
+          </a>
+        </div>
+        <div className="relative" style={{ height: "600px" }}>
+          <iframe
+            src={ledgerline.liveUrl}
+            title="Ledgerline Finance - Live Preview"
+            className="w-full h-full border-0"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function LedgerlineAccounts() {
+  return (
+    <div className="mt-12">
+      <SectionHeader number="08" name="Accounts overview" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {ledgerline.accounts.map((account) => (
+          <div key={account.name} className="border border-line rounded-card p-6 hover:bg-ink/[0.02] transition-colors duration-180">
+            <div className="flex items-start justify-between mb-4">
+              <div>
+                <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-muted mb-1">{account.type}</div>
+                <h3 className="font-serif text-xl leading-[1.15]">{account.name}</h3>
+                <p className="text-xs text-muted mt-1">{account.institution} · ·{account.mask}</p>
+              </div>
+              <Wallet size={20} strokeWidth={1.5} className="text-muted" />
+            </div>
+            <div className="flex items-baseline justify-between">
+              <div className="font-serif text-3xl text-ink">{account.balance}</div>
+              <div className={`font-mono text-[10px] uppercase tracking-[0.12em] ${
+                account.trend.startsWith('+') ? 'text-green-600' : 'text-red-600'
+              }`}>
+                {account.trend}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function LedgerlineCategories() {
+  return (
+    <div className="mt-12">
+      <SectionHeader number="09" name="Spending categories" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {ledgerline.categories.map((category) => (
+          <div key={category.name} className="border border-line rounded-card p-6">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-3 h-3 rounded-full" style={{ backgroundColor: category.color }} />
+              <h3 className="font-serif text-xl leading-[1.15]">{category.name}</h3>
+            </div>
+            <div className="flex items-baseline justify-between mb-2">
+              <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-muted">Budget</span>
+              <span className="font-serif text-2xl text-ink">{category.budget}</span>
+            </div>
+            <p className="text-xs text-muted italic">{category.quip}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function LedgerlineGoals() {
+  return (
+    <div className="mt-12">
+      <SectionHeader number="10" name="Savings goals" />
+      <div className="space-y-4">
+        {ledgerline.goals.map((goal) => (
+          <div key={goal.name} className="border border-line rounded-card p-6">
+            <div className="flex items-start justify-between mb-3">
+              <div>
+                <h3 className="font-serif text-xl leading-[1.15] mb-1">{goal.name}</h3>
+                <p className="text-xs text-muted">{goal.deadline}</p>
+              </div>
+              <Target size={20} strokeWidth={1.5} className="text-muted" />
+            </div>
+            <div className="flex items-baseline justify-between mb-2">
+              <span className="text-sm text-ink">{goal.saved} <span className="text-muted">of {goal.target}</span></span>
+              <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-accent">{goal.pct}%</span>
+            </div>
+            <div className="h-2 bg-line rounded-full overflow-hidden mb-3">
+              <div className="h-full bg-accent rounded-full transition-all duration-500" style={{ width: `${goal.pct}%` }} />
+            </div>
+            <p className="text-xs text-muted italic">{goal.nudge}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function LedgerlineAnalytics() {
+  return (
+    <div className="mt-12 bg-navy rounded-panel p-8 sm:p-12">
+      <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.12em] text-navy-muted">
+        <span className="text-accent">11</span> — Analytics
+      </span>
+      <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl leading-[1.05] tracking-[-0.02em] text-paper mt-4">
+        Patterns,{" "}
+        <em className="italic text-accent font-serif">plainly shown.</em>
+      </h2>
+      <div className="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-6">
+        {ledgerline.analytics.map((kpi) => (
+          <div key={kpi.label} className="border-t border-navy-line pt-4">
+            <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-navy-muted mb-2">{kpi.label}</div>
+            <div className="font-serif text-3xl sm:text-4xl text-paper mb-2">{kpi.value}</div>
+            <p className="text-xs text-navy-muted">{kpi.note}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function CaseStudy() {
   const { slug } = useParams<{ slug: string }>();
   const study = caseStudies.find((c) => c.slug === slug);
@@ -1066,7 +1248,7 @@ export default function CaseStudy() {
       <div className="max-w-page mx-auto px-5 sm:px-6 lg:px-8">
         {/* Cover */}
         <Reveal>
-          {slug === "ironmark-construction" ? <IronmarkCover /> : slug === "meridian-hospital" ? <MeridianCover /> : slug === "nexus-workspace" ? <NexusCover /> : slug === "codex" ? <CodexCover /> : slug === "aetheris" ? <AetherisCover /> : <DeviceMockup color={data.panelColor} title={data.title} />}
+          {slug === "ironmark-construction" ? <IronmarkCover /> : slug === "meridian-hospital" ? <MeridianCover /> : slug === "nexus-workspace" ? <NexusCover /> : slug === "codex" ? <CodexCover /> : slug === "aetheris" ? <AetherisCover /> : slug === "ledgerline" ? <LedgerlineCover /> : <DeviceMockup color={data.panelColor} title={data.title} />}
         </Reveal>
 
         {/* Meta */}
@@ -1295,6 +1477,27 @@ export default function CaseStudy() {
             </Reveal>
             <Reveal delay={580}>
               <AetherisGovernance />
+            </Reveal>
+          </>
+        )}
+
+        {/* Ledgerline-specific sections */}
+        {slug === "ledgerline" && (
+          <>
+            <Reveal delay={480}>
+              <LedgerlineLivePreview />
+            </Reveal>
+            <Reveal delay={500}>
+              <LedgerlineAccounts />
+            </Reveal>
+            <Reveal delay={520}>
+              <LedgerlineCategories />
+            </Reveal>
+            <Reveal delay={540}>
+              <LedgerlineGoals />
+            </Reveal>
+            <Reveal delay={560}>
+              <LedgerlineAnalytics />
             </Reveal>
           </>
         )}
