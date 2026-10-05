@@ -9,11 +9,30 @@ export const personalInfo = {
   status: "Available for projects",
   email: "hello@mayor.dev",
   socials: [
-    { label: "@mayordev", href: "#" },
-    { label: "github/mayor", href: "#" },
-    { label: "linkedin/mayor", href: "#" },
+    { label: "@mayordev", href: "#" }, // TODO: replace with real social links
+    { label: "github/mayor", href: "#" }, // TODO: replace
+    { label: "linkedin/mayor", href: "#" }, // TODO: replace
   ],
 };
+
+// Optional hero image (falls back to SVG illustration if absent)
+export const heroImage: string | undefined = undefined; // TODO: replace with "/images/hero.webp" when available
+
+// Proof strip — testimonials or metrics. Render nothing if empty.
+export interface ProofItem {
+  type: "testimonial" | "metric";
+  quote?: string; // for testimonials
+  name?: string;
+  role?: string;
+  value?: string; // for metrics
+  label?: string;
+}
+
+export const proof: ProofItem[] = [
+  // TODO: replace with real testimonials or metrics
+  // { type: "testimonial", quote: "Mayor shipped our MVP in six weeks.", name: "Ada O.", role: "Founder, Loopwise" },
+  // { type: "metric", value: "480+", label: "Projects delivered" },
+];
 
 // ─── APPS ────────────────────────────────────────────────
 export interface App {
@@ -23,17 +42,19 @@ export interface App {
   color: string;
   status: "Live" | "Beta";
   iconBg: string;
+  href?: string; // TODO: replace with real store/app links
+  icon?: string; // optional image path
 }
 
 export const apps: App[] = [
-  { name: "Pulsekit", description: "Habit tracker that adapts to your energy levels daily.", platform: "iOS · Android", color: "#5b4bd6", status: "Live", iconBg: "#5b4bd6" },
-  { name: "Fieldday", description: "Outdoor activity planner with weather-aware suggestions.", platform: "iOS", color: "#2d8a4e", status: "Live", iconBg: "#2d8a4e" },
-  { name: "Notewell", description: "Voice memo organizer that transcribes and tags automatically.", platform: "Web", color: "#c44b2f", status: "Live", iconBg: "#c44b2f" },
-  { name: "Stackwise", description: "Kanban board built for solo developers shipping fast.", platform: "Web · Desktop", color: "#1d6b8a", status: "Live", iconBg: "#1d6b8a" },
-  { name: "Lumenote", description: "Reading companion that surfaces your highlights contextually.", platform: "iOS · Android", color: "#8a6b1d", status: "Beta", iconBg: "#8a6b1d" },
-  { name: "Gridform", description: "Form builder with conditional logic and offline support.", platform: "Web", color: "#6b1d8a", status: "Live", iconBg: "#6b1d8a" },
-  { name: "Tidepool", description: "Personal finance dashboard with spending pattern insights.", platform: "iOS", color: "#1d8a7a", status: "Beta", iconBg: "#1d8a7a" },
-  { name: "Calmcast", description: "Meditation timer with ambient soundscapes and streaks.", platform: "iOS · Android", color: "#4b5b8a", status: "Live", iconBg: "#4b5b8a" },
+  { name: "Pulsekit", description: "Habit tracker that adapts to your energy levels daily.", platform: "iOS · Android", color: "#5b4bd6", status: "Live", iconBg: "#5b4bd6", href: "#" }, // TODO: replace with real store link
+  { name: "Fieldday", description: "Outdoor activity planner with weather-aware suggestions.", platform: "iOS", color: "#2d8a4e", status: "Live", iconBg: "#2d8a4e", href: "#" }, // TODO: replace
+  { name: "Notewell", description: "Voice memo organizer that transcribes and tags automatically.", platform: "Web", color: "#c44b2f", status: "Live", iconBg: "#c44b2f", href: "#" }, // TODO: replace
+  { name: "Stackwise", description: "Kanban board built for solo developers shipping fast.", platform: "Web · Desktop", color: "#1d6b8a", status: "Live", iconBg: "#1d6b8a", href: "#" }, // TODO: replace
+  { name: "Lumenote", description: "Reading companion that surfaces your highlights contextually.", platform: "iOS · Android", color: "#8a6b1d", status: "Beta", iconBg: "#8a6b1d", href: "#" }, // TODO: replace
+  { name: "Gridform", description: "Form builder with conditional logic and offline support.", platform: "Web", color: "#6b1d8a", status: "Live", iconBg: "#6b1d8a", href: "#" }, // TODO: replace
+  { name: "Tidepool", description: "Personal finance dashboard with spending pattern insights.", platform: "iOS", color: "#1d8a7a", status: "Beta", iconBg: "#1d8a7a", href: "#" }, // TODO: replace
+  { name: "Calmcast", description: "Meditation timer with ambient soundscapes and streaks.", platform: "iOS · Android", color: "#4b5b8a", status: "Live", iconBg: "#4b5b8a", href: "#" }, // TODO: replace
 ];
 
 // ─── PROJECTS ────────────────────────────────────────────
@@ -47,6 +68,8 @@ export interface Project {
   panelColor: string;
   role: string;
   summary: string;
+  image?: string; // optional hero image path; falls back to colour panel
+  platform?: string;
 }
 
 export const projects: Project[] = [
@@ -523,13 +546,14 @@ export interface Capability {
   description: string;
   tags: string[];
   icon: string;
+  projectSlug?: string; // optional link to a related project
 }
 
 export const capabilities: Capability[] = [
-  { title: "Mobile products", description: "Native and cross-platform apps built for real usage patterns. Offline-first, fast, and respectful of battery and data.", tags: ["Flutter", "React Native", "Swift"], icon: "smartphone" },
-  { title: "AI agents", description: "Practical AI features that solve specific problems. Not demos — production systems with evaluation, fallbacks, and clear user trust.", tags: ["LLM", "RAG", "Python"], icon: "brain" },
-  { title: "Web products", description: "Full-stack web apps from idea to deployment. Fast, accessible, and built with maintainability as a first-class concern.", tags: ["React", "Next.js", "Node"], icon: "globe" },
-  { title: "Desktop and systems", description: "Tools that live on the machine. CLI utilities, desktop apps, and infrastructure that engineering teams actually want to use.", tags: ["Rust", "Go", "Electron"], icon: "monitor" },
+  { title: "Mobile products", description: "Native and cross-platform apps built for real usage patterns. Offline-first, fast, and respectful of battery and data.", tags: ["Flutter", "React Native", "Swift"], icon: "smartphone", projectSlug: "meridian-hospital" },
+  { title: "AI agents", description: "Practical AI features that solve specific problems. Not demos — production systems with evaluation, fallbacks, and clear user trust.", tags: ["LLM", "RAG", "Python"], icon: "brain", projectSlug: "codex" },
+  { title: "Web products", description: "Full-stack web apps from idea to deployment. Fast, accessible, and built with maintainability as a first-class concern.", tags: ["React", "Next.js", "Node"], icon: "globe", projectSlug: "ledgerline" },
+  { title: "Desktop and systems", description: "Tools that live on the machine. CLI utilities, desktop apps, and infrastructure that engineering teams actually want to use.", tags: ["Rust", "Go", "Electron"], icon: "monitor", projectSlug: "nexus-workspace" },
 ];
 
 // ─── PRINCIPLES ──────────────────────────────────────────

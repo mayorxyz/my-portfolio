@@ -3,14 +3,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Mayor — Full-stack developer building software people actually use. Based in Port Harcourt, Nigeria." />
-    <meta property="og:title" content="Mayor | Full-stack developer" />
-    <meta property="og:description" content="Building software people actually use." />
-    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#f1efe7" />
     <title>Mayor | Full-stack developer</title>
+    <meta name="description" content="Mayor is a full-stack developer in Port Harcourt, Nigeria, building software people actually use. Mobile, web, AI, and systems." />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Mayor | Full-stack developer" />
+    <meta property="og:description" content="Building software people actually use. Mobile, web, AI, and systems." />
+    <meta property="og:url" content="https://mayor.dev/" /> <!-- TODO: replace with real URL -->
+    <meta property="og:image" content="https://mayor.dev/og-image.jpg" /> <!-- TODO: replace with real image -->
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mayor | Full-stack developer" />
+    <meta name="twitter:description" content="Building software people actually use." />
+    <meta name="twitter:image" content="https://mayor.dev/og-image.jpg" /> <!-- TODO: replace -->
+
+    <!-- Font preload -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" />
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Mayor",
+      "jobTitle": "Full-stack developer",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Port Harcourt",
+        "addressCountry": "Nigeria"
+      },
+      "url": "https://mayor.dev/",
+      "email": "hello@mayor.dev",
+      "sameAs": []
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "Mayor",
+        "jobTitle": "Full-stack developer"
+      }
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
