@@ -50,6 +50,7 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  { slug: "ironmark-construction", title: "Ironmark Construction", category: "Web", year: "2025", tagline: "A bold digital presence for 25 years of building what stays standing.", tags: ["React", "TypeScript", "Tailwind", "Vite"], panelColor: "#1d2b47", role: "Lead developer & designer", summary: "Designed and built a full marketing website for Ironmark Construction Group. Editorial style, component architecture, and a live preview that lets visitors explore the real site." },
   { slug: "orbit-market", title: "Orbit Market", category: "Web", year: "2026", tagline: "A peer-to-peer marketplace for local artisans and makers.", tags: ["React", "Node", "Postgres", "Stripe"], panelColor: "#e8855a", role: "Lead developer", summary: "Built a marketplace connecting 200+ local artisans with buyers. Focused on fast load times, simple checkout, and a clean seller dashboard." },
   { slug: "fieldnotes-app", title: "Fieldnotes", category: "Mobile", year: "2025", tagline: "Offline-first journaling app for researchers in remote areas.", tags: ["Flutter", "SQLite", "Dart"], panelColor: "#a9d6c9", role: "Solo developer", summary: "Designed and shipped a journaling app that works fully offline and syncs when connected. Used by 12 field researchers across three countries." },
   { slug: "lumen-ai", title: "Lumen AI", category: "AI", year: "2026", tagline: "AI assistant that drafts, reviews, and learns from your writing.", tags: ["Python", "FastAPI", "LLM", "React"], panelColor: "#c8bdf0", role: "AI engineer", summary: "Built an AI writing assistant that adapts to the user's voice over time. Handles drafting, editing, and tone adjustment across long-form content." },
@@ -82,6 +83,53 @@ export interface CaseStudy {
 }
 
 export const caseStudies: CaseStudy[] = [
+  {
+    slug: "ironmark-construction",
+    title: "Ironmark Construction Group",
+    category: "Web",
+    year: "2025",
+    stack: ["React", "TypeScript", "Tailwind", "Vite"],
+    timeline: "3 months",
+    platform: "Web",
+    role: "Lead developer & designer",
+    problem: "Ironmark Construction Group had 25+ years of experience but no digital presence. They needed a website that reflected their reputation for reliability and quality work across commercial, industrial, residential, and infrastructure projects. The site had to feel professional and trustworthy while being easy for their team to update with new projects.",
+    approach: [
+      "Designed a bold, editorial-style website that mirrors their no-nonsense approach to construction. Clean typography, strong imagery, and clear service categories.",
+      "Built a component-based architecture with reusable sections for projects, services, and team. This makes it easy to add new content without touching code.",
+      "Implemented smooth animations and interactions that feel premium without being distracting. Every element serves a purpose.",
+    ],
+    architectureNodes: [
+      { id: "client", label: "React SPA", x: 100, y: 200 },
+      { id: "router", label: "React Router", x: 280, y: 200 },
+      { id: "components", label: "Components", x: 450, y: 120 },
+      { id: "content", label: "Content Data", x: 450, y: 280 },
+      { id: "styles", label: "Tailwind CSS", x: 280, y: 60 },
+      { id: "build", label: "Vite Build", x: 280, y: 340 },
+    ],
+    architectureEdges: [["client", "router"], ["router", "components"], ["client", "content"], ["components", "styles"], ["client", "build"]],
+    stats: [
+      { value: "100%", label: "Mobile responsive" },
+      { value: "95+", label: "Lighthouse score" },
+      { value: "3mo", label: "Delivery time" },
+    ],
+    chartA: [
+      { month: "Jan", value: 0 }, { month: "Feb", value: 15 }, { month: "Mar", value: 35 },
+      { month: "Apr", value: 52 }, { month: "May", value: 68 }, { month: "Jun", value: 85 },
+      { month: "Jul", value: 92 }, { month: "Aug", value: 95 }, { month: "Sep", value: 95 },
+      { month: "Oct", value: 95 }, { month: "Nov", value: 95 }, { month: "Dec", value: 95 },
+    ],
+    chartB: [
+      { category: "Speed", value: 98 }, { category: "A11y", value: 100 },
+      { category: "Best Prac", value: 100 }, { category: "SEO", value: 100 },
+      { category: "PWA", value: 90 },
+    ],
+    nextSteps: [
+      "Add project filtering by category and year",
+      "Implement a CMS for easy content updates",
+      "Add a project inquiry form with email notifications",
+    ],
+    panelColor: "#1d2b47",
+  },
   {
     slug: "orbit-market",
     title: "Orbit Market",
@@ -247,6 +295,37 @@ export const principles = [
   { label: "Measure first", sentence: "Decisions start with data, not opinions." },
   { label: "Write it down", sentence: "If it isn't documented, it doesn't exist." },
 ];
+
+// ─── IRONMARK CONSTRUCTION ───────────────────────────────
+export const ironmark = {
+  liveUrl: "https://ironmark-construction-company.vercel.app/",
+  companyName: "Ironmark Construction Group",
+  tagline: "We build the stuff that stays standing.",
+  stats: [
+    { value: "25+", label: "Years building" },
+    { value: "480", label: "Projects delivered" },
+    { value: "1.2M", label: "Man-hours, incident-free" },
+    { value: "98%", label: "On or ahead of schedule" },
+  ],
+  services: [
+    { title: "Commercial", icon: "building", blurb: "Offices, retail and mixed-use that make tenants stay." },
+    { title: "Industrial", icon: "factory", blurb: "Warehouses, plants and yards built for heavy duty." },
+    { title: "Residential", icon: "home", blurb: "Homes and apartment blocks built like we'd live in them." },
+    { title: "Infrastructure", icon: "bridge", blurb: "Roads, bridges and utilities that carry the everyday." },
+  ],
+  featuredProjects: [
+    { title: "Meridian Tower", category: "Commercial", year: "2024", tagline: "A 28-storey tower that finished before the coffee machines arrived." },
+    { title: "Cargo Point Hub", category: "Industrial", year: "2023", tagline: "Sixty-five thousand square metres, and not one wobbly floor." },
+    { title: "Willow Court", category: "Residential", year: "2025", tagline: "180 homes, one very happy waiting list." },
+    { title: "Harbour Link", category: "Infrastructure", year: "2022", tagline: "The bridge that cut a 40-minute detour down to five." },
+  ],
+  values: [
+    { label: "Safety first", sentence: "Everyone goes home the same way they arrived." },
+    { label: "Say it straight", sentence: "Clear prices, clear schedules, clear bad news." },
+    { label: "Build to last", sentence: "We'd rather do it once than come back again." },
+    { label: "Own the outcome", sentence: "Our name goes on the building." },
+  ],
+};
 
 // ─── ABOUT ───────────────────────────────────────────────
 export const bio = "I'm Mayor, a full-stack developer based in Port Harcourt, Nigeria. I build software that people actually use — mobile apps, web products, AI systems, and the infrastructure behind them. I care about shipping fast, measuring outcomes, and writing code that the next developer can understand. When I'm not building, I'm reading about systems thinking or walking along the waterfront.";
