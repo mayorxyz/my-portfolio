@@ -70,23 +70,198 @@ export interface Project {
   summary: string;
   image?: string; // optional hero image path; falls back to colour panel
   platform?: string;
+  featured?: boolean; // show as featured block on work index
+  gallery?: string[]; // additional images for case study
+  liveUrl?: string; // live project URL
+  hasCaseStudy?: boolean; // whether a full case study exists
 }
 
 export const projects: Project[] = [
-  { slug: "ledgerline", title: "Ledgerline", category: "Web", year: "2026", tagline: "Your money, minus the mystery.", tags: ["React", "TypeScript", "Tailwind", "Recharts"], panelColor: "#a9d6c9", role: "Lead developer & designer", summary: "Built a personal finance OS with account tracking, transaction management, savings goals, and analytics. Plain-spoken voice, zero jargon, and a playful approach to money management." },
-  { slug: "aetheris", title: "Aetheris", category: "Web", year: "2026", tagline: "The foundational Layer-1 for the next internet.", tags: ["React", "TypeScript", "Tailwind", "Web3"], panelColor: "#0a0a0a", role: "Lead developer & designer", summary: "Designed and built a cinematic, mythic website for a fictional Layer-1 blockchain. Features live stats, technical pillars, ecosystem showcase, developer docs, and governance interface." },
-  { slug: "codex", title: "Codex", category: "Web", year: "2026", tagline: "A knowledge base that lives in your browser and compiles your notes on the fly.", tags: ["React", "TypeScript", "Vite", "Tailwind"], panelColor: "#c8bdf0", role: "Developer and designer", summary: "Built a fast, private knowledge base with full-text search, syntax highlighting, and a single render pipeline. Zero backend — everything runs in the browser with localStorage persistence." },
-  { slug: "nexus-workspace", title: "Nexus Workspace", category: "Web", year: "2026", tagline: "A premium dark workspace where fast teams stop losing the plot.", tags: ["React", "TypeScript", "Tailwind", "Supabase"], panelColor: "#0a0a0a", role: "Lead developer & designer", summary: "Built a workspace and analytics platform with drag-and-drop boards, live dashboards, and real-time sync. Premium dark UI with smooth animations and a focus on developer experience." },
-  { slug: "meridian-hospital", title: "Meridian Hospital", category: "Web", year: "2025", tagline: "Clinical trust, designed — a teaching hospital's digital front door.", tags: ["React", "TypeScript", "Tailwind", "Vite"], panelColor: "#1d2b47", role: "Lead developer & designer", summary: "Designed and built a patient-focused website for MERIDIAN General Hospital. Features a cost estimator, doctor directory, department showcase, and a calm, trustworthy design language." },
-  { slug: "ironmark-construction", title: "Ironmark Construction", category: "Web", year: "2025", tagline: "A bold digital presence for 25 years of building what stays standing.", tags: ["React", "TypeScript", "Tailwind", "Vite"], panelColor: "#1d2b47", role: "Lead developer & designer", summary: "Designed and built a full marketing website for Ironmark Construction Group. Editorial style, component architecture, and a live preview that lets visitors explore the real site." },
-  { slug: "orbit-market", title: "Orbit Market", category: "Web", year: "2026", tagline: "A peer-to-peer marketplace for local artisans and makers.", tags: ["React", "Node", "Postgres", "Stripe"], panelColor: "#e8855a", role: "Lead developer", summary: "Built a marketplace connecting 200+ local artisans with buyers. Focused on fast load times, simple checkout, and a clean seller dashboard." },
-  { slug: "fieldnotes-app", title: "Fieldnotes", category: "Mobile", year: "2025", tagline: "Offline-first journaling app for researchers in remote areas.", tags: ["Flutter", "SQLite", "Dart"], panelColor: "#a9d6c9", role: "Solo developer", summary: "Designed and shipped a journaling app that works fully offline and syncs when connected. Used by 12 field researchers across three countries." },
-  { slug: "lumen-ai", title: "Lumen AI", category: "AI", year: "2026", tagline: "AI assistant that drafts, reviews, and learns from your writing.", tags: ["Python", "FastAPI", "LLM", "React"], panelColor: "#c8bdf0", role: "AI engineer", summary: "Built an AI writing assistant that adapts to the user's voice over time. Handles drafting, editing, and tone adjustment across long-form content." },
-  { slug: "gridops", title: "GridOps", category: "Systems", year: "2025", tagline: "Infrastructure monitoring dashboard for small engineering teams.", tags: ["Go", "Grafana", "Docker", "React"], panelColor: "#d8c9a0", role: "Systems engineer", summary: "Created a lightweight monitoring tool that surfaces only what matters. Reduced alert fatigue by 60% for the pilot team of 8 engineers." },
-  { slug: "canopy-cms", title: "Canopy CMS", category: "Web", year: "2024", tagline: "Headless CMS designed for content teams who hate complexity.", tags: ["Next.js", "Prisma", "TypeScript"], panelColor: "#e8a9dd", role: "Full-stack developer", summary: "Built a headless CMS with a visual editor that non-technical writers actually enjoy using. Now powering 14 editorial sites." },
-  { slug: "pulse-analytics", title: "Pulse Analytics", category: "AI", year: "2026", tagline: "Real-time analytics with natural language queries.", tags: ["Python", "React", "D3", "LLM"], panelColor: "#5b8a6b", role: "Lead developer", summary: "Built an analytics dashboard where users ask questions in plain English and get charts back. Processes 2M events per day for the beta cohort." },
-  { slug: "terravault", title: "TerraVault", category: "Systems", year: "2024", tagline: "Encrypted file storage with zero-knowledge architecture.", tags: ["Rust", "WebCrypto", "S3", "React"], panelColor: "#1d2b47", role: "Security-focused dev", summary: "Built end-to-end encrypted storage where the server never sees plaintext. Handles files up to 5GB with resumable uploads." },
-  { slug: "harbor-app", title: "Harbor", category: "Mobile", year: "2025", tagline: "Neighborhood safety network with anonymous reporting.", tags: ["React Native", "Firebase", "Maps"], panelColor: "#c44b2f", role: "Mobile developer", summary: "Shipped a community safety app with anonymous reporting, verified incidents, and real-time alerts. Active in 6 neighborhoods." },
+  {
+    slug: "ledgerline",
+    title: "Ledgerline",
+    category: "Web",
+    year: "2026",
+    tagline: "Your money, minus the mystery.",
+    tags: ["React", "TypeScript", "Tailwind", "Recharts"],
+    panelColor: "#a9d6c9",
+    role: "Lead developer & designer",
+    summary: "Built a personal finance OS with account tracking, transaction management, savings goals, and analytics. Plain-spoken voice, zero jargon, and a playful approach to money management.",
+    featured: true,
+    hasCaseStudy: true,
+    liveUrl: "https://finance-beta-jade-28.vercel.app/",
+    // image: "/images/projects/ledgerline.webp", // TODO: add screenshot path
+  },
+  {
+    slug: "aetheris",
+    title: "Aetheris",
+    category: "Web",
+    year: "2026",
+    tagline: "The foundational Layer-1 for the next internet.",
+    tags: ["React", "TypeScript", "Tailwind", "Web3"],
+    panelColor: "#0a0a0a",
+    role: "Lead developer & designer",
+    summary: "Designed and built a cinematic, mythic website for a fictional Layer-1 blockchain. Features live stats, technical pillars, ecosystem showcase, developer docs, and governance interface.",
+    hasCaseStudy: true,
+    liveUrl: "https://aetheris-blockchain.vercel.app/",
+    // image: "/images/projects/aetheris.webp", // TODO: add screenshot path
+  },
+  {
+    slug: "codex",
+    title: "Codex",
+    category: "Web",
+    year: "2026",
+    tagline: "A knowledge base that lives in your browser and compiles your notes on the fly.",
+    tags: ["React", "TypeScript", "Vite", "Tailwind"],
+    panelColor: "#c8bdf0",
+    role: "Developer and designer",
+    summary: "Built a fast, private knowledge base with full-text search, syntax highlighting, and a single render pipeline. Zero backend — everything runs in the browser with localStorage persistence.",
+    hasCaseStudy: true,
+    liveUrl: "https://codex-iota-six.vercel.app/#/",
+    // image: "/images/projects/codex.webp", // TODO: add screenshot path
+  },
+  {
+    slug: "nexus-workspace",
+    title: "Nexus Workspace",
+    category: "Web",
+    year: "2026",
+    tagline: "A premium dark workspace where fast teams stop losing the plot.",
+    tags: ["React", "TypeScript", "Tailwind", "Supabase"],
+    panelColor: "#0a0a0a",
+    role: "Lead developer & designer",
+    summary: "Built a workspace and analytics platform with drag-and-drop boards, live dashboards, and real-time sync. Premium dark UI with smooth animations and a focus on developer experience.",
+    hasCaseStudy: true,
+    liveUrl: "https://nexus-startup-pi.vercel.app/",
+    // image: "/images/projects/nexus.webp", // TODO: add screenshot path
+  },
+  {
+    slug: "meridian-hospital",
+    title: "Meridian Hospital",
+    category: "Web",
+    year: "2025",
+    tagline: "Clinical trust, designed — a teaching hospital's digital front door.",
+    tags: ["React", "TypeScript", "Tailwind", "Vite"],
+    panelColor: "#1d2b47",
+    role: "Lead developer & designer",
+    summary: "Designed and built a patient-focused website for MERIDIAN General Hospital. Features a cost estimator, doctor directory, department showcase, and a calm, trustworthy design language.",
+    hasCaseStudy: true,
+    liveUrl: "https://meridian-hospital-gray.vercel.app/",
+    // image: "/images/projects/meridian.webp", // TODO: add screenshot path
+  },
+  {
+    slug: "ironmark-construction",
+    title: "Ironmark Construction",
+    category: "Web",
+    year: "2025",
+    tagline: "A bold digital presence for 25 years of building what stays standing.",
+    tags: ["React", "TypeScript", "Tailwind", "Vite"],
+    panelColor: "#1d2b47",
+    role: "Lead developer & designer",
+    summary: "Designed and built a full marketing website for Ironmark Construction Group. Editorial style, component architecture, and a live preview that lets visitors explore the real site.",
+    hasCaseStudy: true,
+    liveUrl: "https://ironmark-construction-company.vercel.app/",
+    // image: "/images/projects/ironmark.webp", // TODO: add screenshot path
+  },
+  {
+    slug: "orbit-market",
+    title: "Orbit Market",
+    category: "Web",
+    year: "2026",
+    tagline: "A peer-to-peer marketplace for local artisans and makers.",
+    tags: ["React", "Node", "Postgres", "Stripe"],
+    panelColor: "#e8855a",
+    role: "Lead developer",
+    summary: "Built a marketplace connecting 200+ local artisans with buyers. Focused on fast load times, simple checkout, and a clean seller dashboard.",
+    hasCaseStudy: true,
+    // image: "/images/projects/orbit.webp", // TODO: add screenshot path
+  },
+  {
+    slug: "fieldnotes-app",
+    title: "Fieldnotes",
+    category: "Mobile",
+    year: "2025",
+    tagline: "Offline-first journaling app for researchers in remote areas.",
+    tags: ["Flutter", "SQLite", "Dart"],
+    panelColor: "#a9d6c9",
+    role: "Solo developer",
+    summary: "Designed and shipped a journaling app that works fully offline and syncs when connected. Used by 12 field researchers across three countries.",
+    hasCaseStudy: true,
+    // image: "/images/projects/fieldnotes.webp", // TODO: add screenshot path
+  },
+  {
+    slug: "lumen-ai",
+    title: "Lumen AI",
+    category: "AI",
+    year: "2026",
+    tagline: "AI assistant that drafts, reviews, and learns from your writing.",
+    tags: ["Python", "FastAPI", "LLM", "React"],
+    panelColor: "#c8bdf0",
+    role: "AI engineer",
+    summary: "Built an AI writing assistant that adapts to the user's voice over time. Handles drafting, editing, and tone adjustment across long-form content.",
+    hasCaseStudy: true,
+    // image: "/images/projects/lumen.webp", // TODO: add screenshot path
+  },
+  {
+    slug: "gridops",
+    title: "GridOps",
+    category: "Systems",
+    year: "2025",
+    tagline: "Infrastructure monitoring dashboard for small engineering teams.",
+    tags: ["Go", "Grafana", "Docker", "React"],
+    panelColor: "#d8c9a0",
+    role: "Systems engineer",
+    summary: "Created a lightweight monitoring tool that surfaces only what matters. Reduced alert fatigue by 60% for the pilot team of 8 engineers.",
+    hasCaseStudy: true,
+    // image: "/images/projects/gridops.webp", // TODO: add screenshot path
+  },
+  {
+    slug: "canopy-cms",
+    title: "Canopy CMS",
+    category: "Web",
+    year: "2024",
+    tagline: "Headless CMS designed for content teams who hate complexity.",
+    tags: ["Next.js", "Prisma", "TypeScript"],
+    panelColor: "#e8a9dd",
+    role: "Full-stack developer",
+    summary: "Built a headless CMS with a visual editor that non-technical writers actually enjoy using. Now powering 14 editorial sites.",
+    // image: "/images/projects/canopy.webp", // TODO: add screenshot path
+  },
+  {
+    slug: "pulse-analytics",
+    title: "Pulse Analytics",
+    category: "AI",
+    year: "2026",
+    tagline: "Real-time analytics with natural language queries.",
+    tags: ["Python", "React", "D3", "LLM"],
+    panelColor: "#5b8a6b",
+    role: "Lead developer",
+    summary: "Built an analytics dashboard where users ask questions in plain English and get charts back. Processes 2M events per day for the beta cohort.",
+    // image: "/images/projects/pulse.webp", // TODO: add screenshot path
+  },
+  {
+    slug: "terravault",
+    title: "TerraVault",
+    category: "Systems",
+    year: "2024",
+    tagline: "Encrypted file storage with zero-knowledge architecture.",
+    tags: ["Rust", "WebCrypto", "S3", "React"],
+    panelColor: "#1d2b47",
+    role: "Security-focused dev",
+    summary: "Built end-to-end encrypted storage where the server never sees plaintext. Handles files up to 5GB with resumable uploads.",
+    // image: "/images/projects/terravault.webp", // TODO: add screenshot path
+  },
+  {
+    slug: "harbor-app",
+    title: "Harbor",
+    category: "Mobile",
+    year: "2025",
+    tagline: "Neighborhood safety network with anonymous reporting.",
+    tags: ["React Native", "Firebase", "Maps"],
+    panelColor: "#c44b2f",
+    role: "Mobile developer",
+    summary: "Shipped a community safety app with anonymous reporting, verified incidents, and real-time alerts. Active in 6 neighborhoods.",
+    // image: "/images/projects/harbor.webp", // TODO: add screenshot path
+  },
 ];
 
 // ─── CASE STUDIES (3 full) ───────────────────────────────
