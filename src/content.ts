@@ -50,6 +50,7 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  { slug: "ledgerline", title: "Ledgerline", category: "Web", year: "2026", tagline: "Your money, minus the mystery.", tags: ["React", "TypeScript", "Tailwind", "Recharts"], panelColor: "#a9d6c9", role: "Lead developer & designer", summary: "Built a personal finance OS with account tracking, transaction management, savings goals, and analytics. Plain-spoken voice, zero jargon, and a playful approach to money management." },
   { slug: "aetheris", title: "Aetheris", category: "Web", year: "2026", tagline: "The foundational Layer-1 for the next internet.", tags: ["React", "TypeScript", "Tailwind", "Web3"], panelColor: "#0a0a0a", role: "Lead developer & designer", summary: "Designed and built a cinematic, mythic website for a fictional Layer-1 blockchain. Features live stats, technical pillars, ecosystem showcase, developer docs, and governance interface." },
   { slug: "codex", title: "Codex", category: "Web", year: "2026", tagline: "A knowledge base that lives in your browser and compiles your notes on the fly.", tags: ["React", "TypeScript", "Vite", "Tailwind"], panelColor: "#c8bdf0", role: "Developer and designer", summary: "Built a fast, private knowledge base with full-text search, syntax highlighting, and a single render pipeline. Zero backend — everything runs in the browser with localStorage persistence." },
   { slug: "nexus-workspace", title: "Nexus Workspace", category: "Web", year: "2026", tagline: "A premium dark workspace where fast teams stop losing the plot.", tags: ["React", "TypeScript", "Tailwind", "Supabase"], panelColor: "#0a0a0a", role: "Lead developer & designer", summary: "Built a workspace and analytics platform with drag-and-drop boards, live dashboards, and real-time sync. Premium dark UI with smooth animations and a focus on developer experience." },
@@ -87,6 +88,54 @@ export interface CaseStudy {
 }
 
 export const caseStudies: CaseStudy[] = [
+  {
+    slug: "ledgerline",
+    title: "Ledgerline",
+    category: "Web",
+    year: "2026",
+    stack: ["React", "TypeScript", "Tailwind", "Recharts"],
+    timeline: "Personal project",
+    platform: "Web",
+    role: "Lead developer & designer",
+    problem: "Personal finance apps are either too complex for everyday use or too simplistic to provide real insights. Users need something that tracks multiple accounts, categorizes spending automatically, and helps them save for goals — all without feeling like a spreadsheet or a lecture.",
+    approach: [
+      "Designed a plain-spoken, slightly cheeky voice that treats money management like a conversation, not a chore. Every label, tooltip, and empty state has personality.",
+      "Built a modular dashboard with four main views (Overview, Analytics, Transactions, Goals) that work independently but share the same data layer. Everything updates in real-time.",
+      "Created a transaction generator that produces realistic demo data so the app always looks alive. Users can add, edit, and delete transactions with instant feedback.",
+    ],
+    architectureNodes: [
+      { id: "overview", label: "Overview", x: 100, y: 100 },
+      { id: "analytics", label: "Analytics", x: 300, y: 100 },
+      { id: "transactions", label: "Transactions", x: 500, y: 100 },
+      { id: "goals", label: "Goals", x: 700, y: 100 },
+      { id: "accounts", label: "Accounts", x: 200, y: 300 },
+      { id: "categories", label: "Categories", x: 400, y: 300 },
+      { id: "storage", label: "localStorage", x: 600, y: 300 },
+    ],
+    architectureEdges: [["overview", "accounts"], ["overview", "categories"], ["analytics", "transactions"], ["transactions", "storage"], ["goals", "storage"]],
+    stats: [
+      { value: "4", label: "Main views" },
+      { value: "10", label: "Categories" },
+      { value: "100%", label: "Client-side" },
+    ],
+    chartA: [
+      { month: "Jan", value: 0 }, { month: "Feb", value: 0 }, { month: "Mar", value: 0 },
+      { month: "Apr", value: 0 }, { month: "May", value: 0 }, { month: "Jun", value: 0 },
+      { month: "Jul", value: 0 }, { month: "Aug", value: 0 }, { month: "Sep", value: 0 },
+      { month: "Oct", value: 0 }, { month: "Nov", value: 0 }, { month: "Dec", value: 0 },
+    ],
+    chartB: [
+      { category: "Speed", value: 100 }, { category: "A11y", value: 98 },
+      { category: "Best Prac", value: 100 }, { category: "SEO", value: 95 },
+      { category: "PWA", value: 90 },
+    ],
+    nextSteps: [
+      "Add bank API integration via Plaid",
+      "Implement recurring transaction detection",
+      "Build mobile app with offline support",
+    ],
+    panelColor: "#a9d6c9",
+  },
   {
     slug: "aetheris",
     title: "Aetheris",
@@ -489,6 +538,41 @@ export const principles = [
   { label: "Measure first", sentence: "Decisions start with data, not opinions." },
   { label: "Write it down", sentence: "If it isn't documented, it doesn't exist." },
 ];
+
+// ─── LEDGERLINE FINANCE OS ───────────────────────────────
+export const ledgerline = {
+  liveUrl: "https://finance-beta-jade-28.vercel.app/",
+  productName: "Ledgerline",
+  tagline: "Your money, minus the mystery.",
+  description: "A personal finance OS that tracks accounts, transactions, goals, and analytics with a plain-spoken voice and zero jargon.",
+  user: { name: "Tobi Adebayo", initials: "TA", plan: "Demo account" },
+  accounts: [
+    { name: "Everyday Checking", institution: "Harbor Credit Union", type: "checking", balance: "$4,286.50", trend: "+2.4%", mask: "4821" },
+    { name: "Rainy Day Savings", institution: "Harbor Credit Union", type: "savings", balance: "$12,840", trend: "+5.1%", mask: "9304" },
+    { name: "Travel Rewards Card", institution: "Summit Bank", type: "credit", balance: "-$1,124.80", trend: "-3.2%", mask: "7715" },
+    { name: "Long Game Portfolio", institution: "Pinecrest Invest", type: "investment", balance: "$28,460.25", trend: "+8.7%", mask: "2208" },
+  ],
+  categories: [
+    { name: "Housing", color: "#2f6f8f", budget: "$1,400", quip: "Four walls, one landlord." },
+    { name: "Groceries", color: "#6aa84f", budget: "$450", quip: "Yes, you needed all of it." },
+    { name: "Dining out", color: "#e07a3f", budget: "$280", quip: "Worth it. Mostly." },
+    { name: "Transport", color: "#8a6bd1", budget: "$220", quip: "Getting from A to B." },
+    { name: "Subscriptions", color: "#c2417a", budget: "$90", quip: "Do you still watch that one?" },
+    { name: "Health", color: "#d1495b", budget: "$150", quip: "Your future self says thanks." },
+  ],
+  goals: [
+    { name: "Emergency fund", target: "$15,000", saved: "$12,840", pct: 86, deadline: "Dec 2026", nudge: "Nearly there. Future you is already relaxed." },
+    { name: "Trip to Japan", target: "$4,500", saved: "$1,980", pct: 44, deadline: "Apr 2027", nudge: "Ramen budget is safe." },
+    { name: "New laptop", target: "$2,200", saved: "$1,650", pct: 75, deadline: "Nov 2026", nudge: "Three good weeks away." },
+    { name: "Home deposit", target: "$40,000", saved: "$9,200", pct: 23, deadline: "Jun 2029", nudge: "Long game. Steady wins." },
+  ],
+  analytics: [
+    { label: "Net worth", value: "$44,462", note: "Everything you own minus everything you owe" },
+    { label: "Savings rate", value: "31%", note: "Share of income you kept" },
+    { label: "Avg monthly spend", value: "$3,212", note: "Last three months" },
+    { label: "Investment return", value: "+6.5%", note: "Year to date" },
+  ],
+};
 
 // ─── AETHERIS BLOCKCHAIN ─────────────────────────────────
 export const aetheris = {
