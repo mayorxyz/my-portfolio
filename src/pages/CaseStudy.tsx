@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { SectionHeader, PillTag, TextLink, Reveal } from "../components/ui";
-import { caseStudies, projects, ironmark, meridian } from "../content";
-import { Building, Factory, Home, Route, Heart, Brain, Bone, Baby, HeartHandshake, Ribbon, Siren, ScanLine } from "lucide-react";
+import { caseStudies, projects, ironmark, meridian, nexus } from "../content";
+import { Building, Factory, Home, Route, Heart, Brain, Bone, Baby, HeartHandshake, Ribbon, Siren, ScanLine, LayoutGrid, BarChart3, ShieldCheck, Zap, Sparkles, PartyPopper } from "lucide-react";
 
 function DeviceMockup({ color, title }: { color: string; title: string }) {
   return (
@@ -409,6 +409,193 @@ function MeridianValues() {
   );
 }
 
+function getFeatureIcon(icon: string) {
+  switch (icon) {
+    case "layout-grid": return <LayoutGrid size={24} strokeWidth={1.5} />;
+    case "bar-chart-3": return <BarChart3 size={24} strokeWidth={1.5} />;
+    case "shield-check": return <ShieldCheck size={24} strokeWidth={1.5} />;
+    case "zap": return <Zap size={24} strokeWidth={1.5} />;
+    case "sparkles": return <Sparkles size={24} strokeWidth={1.5} />;
+    case "party-popper": return <PartyPopper size={24} strokeWidth={1.5} />;
+    default: return <LayoutGrid size={24} strokeWidth={1.5} />;
+  }
+}
+
+function NexusCover() {
+  return (
+    <div className="rounded-panel overflow-hidden relative bg-ink" style={{ aspectRatio: "16/9" }}>
+      <svg viewBox="0 0 800 450" className="w-full h-full" aria-label="Nexus workspace illustration">
+        {/* Dark background with gradient */}
+        <rect width="800" height="450" fill="#0a0a0a" />
+        
+        {/* Dashboard cards */}
+        <rect x="50" y="80" width="220" height="140" rx="12" fill="#1a1a1a" stroke="#2a2a2a" strokeWidth="1" />
+        <rect x="290" y="80" width="220" height="140" rx="12" fill="#1a1a1a" stroke="#2a2a2a" strokeWidth="1" />
+        <rect x="530" y="80" width="220" height="140" rx="12" fill="#1a1a1a" stroke="#2a2a2a" strokeWidth="1" />
+        
+        {/* Chart in first card */}
+        <line x1="70" y1="180" x2="250" y2="180" stroke="#2a2a2a" strokeWidth="1" />
+        <path d="M 70 160 L 100 140 L 130 150 L 160 120 L 190 130 L 220 100 L 250 110" 
+              fill="none" stroke="#e8613c" strokeWidth="2" strokeLinecap="round" />
+        
+        {/* Bars in second card */}
+        <rect x="310" y="160" width="30" height="40" fill="#e8613c" opacity="0.8" />
+        <rect x="350" y="140" width="30" height="60" fill="#e8613c" opacity="0.6" />
+        <rect x="390" y="120" width="30" height="80" fill="#e8613c" opacity="0.9" />
+        <rect x="430" y="150" width="30" height="50" fill="#e8613c" opacity="0.7" />
+        <rect x="470" y="130" width="30" height="70" fill="#e8613c" opacity="0.8" />
+        
+        {/* Board in third card */}
+        <rect x="550" y="100" width="60" height="80" rx="4" fill="#2a2a2a" />
+        <rect x="620" y="100" width="60" height="80" rx="4" fill="#2a2a2a" />
+        <rect x="690" y="100" width="60" height="80" rx="4" fill="#2a2a2a" />
+        
+        {/* Bottom section */}
+        <rect x="50" y="250" width="700" height="150" rx="12" fill="#1a1a1a" stroke="#2a2a2a" strokeWidth="1" />
+        
+        {/* Task list */}
+        <rect x="70" y="270" width="200" height="20" rx="4" fill="#2a2a2a" />
+        <rect x="70" y="300" width="200" height="20" rx="4" fill="#2a2a2a" />
+        <rect x="70" y="330" width="200" height="20" rx="4" fill="#2a2a2a" />
+        <rect x="70" y="360" width="200" height="20" rx="4" fill="#2a2a2a" />
+        
+        {/* Metrics */}
+        <text x="320" y="290" fill="#e8613c" fontSize="32" fontFamily="Instrument Serif, serif">12k+</text>
+        <text x="320" y="310" fill="#6b6a64" fontSize="10" fontFamily="JetBrains Mono, monospace">TEAMS</text>
+        
+        <text x="450" y="290" fill="#e8613c" fontSize="32" fontFamily="Instrument Serif, serif">99.9%</text>
+        <text x="450" y="310" fill="#6b6a64" fontSize="10" fontFamily="JetBrains Mono, monospace">UPTIME</text>
+        
+        <text x="580" y="290" fill="#e8613c" fontSize="32" fontFamily="Instrument Serif, serif">4.9/5</text>
+        <text x="580" y="310" fill="#6b6a64" fontSize="10" fontFamily="JetBrains Mono, monospace">RATING</text>
+        
+        {/* HUD labels */}
+        <text x="20" y="30" fill="#6b6a64" fontSize="10" fontFamily="JetBrains Mono, monospace">NEXUS WORKSPACE</text>
+        <text x="20" y="44" fill="#6b6a64" fontSize="10" fontFamily="JetBrains Mono, monospace">v2.0.1</text>
+        <text x="680" y="30" fill="#6b6a64" fontSize="10" fontFamily="JetBrains Mono, monospace">LIVE DASHBOARDS</text>
+        <text x="680" y="440" fill="#6b6a64" fontSize="10" fontFamily="JetBrains Mono, monospace">REAL-TIME SYNC</text>
+      </svg>
+    </div>
+  );
+}
+
+function NexusLivePreview() {
+  return (
+    <div className="mt-12">
+      <SectionHeader number="07" name="Live preview" />
+      <div className="border border-line rounded-panel overflow-hidden">
+        <div className="bg-ink text-paper px-6 py-3 flex items-center justify-between">
+          <span className="font-mono text-[10px] uppercase tracking-[0.12em]">nexus-startup-pi.vercel.app</span>
+          <a
+            href={nexus.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-mono text-[10px] uppercase tracking-[0.12em] text-accent hover:underline"
+          >
+            Open in new tab ↗
+          </a>
+        </div>
+        <div className="relative" style={{ height: "600px" }}>
+          <iframe
+            src={nexus.liveUrl}
+            title="Nexus Workspace - Live Preview"
+            className="w-full h-full border-0"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function NexusFeatures() {
+  return (
+    <div className="mt-12">
+      <SectionHeader number="08" name="Key features" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {nexus.features.map((feature) => (
+          <div key={feature.title} className="border border-line rounded-card p-6 hover:bg-ink/[0.02] transition-colors duration-180">
+            <div className="text-ink mb-3">{getFeatureIcon(feature.icon)}</div>
+            <h3 className="font-serif text-2xl leading-[1.15] mb-2">{feature.title}</h3>
+            <p className="text-sm text-muted">{feature.blurb}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function NexusStats() {
+  return (
+    <div className="mt-12">
+      <SectionHeader number="09" name="Platform metrics" />
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+        {nexus.stats.map((stat) => (
+          <div key={stat.label} className="border border-line rounded-card p-6 text-center">
+            <div className="font-serif text-3xl sm:text-4xl text-ink">{stat.value}</div>
+            <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-muted mt-2">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function NexusTestimonials() {
+  return (
+    <div className="mt-12">
+      <SectionHeader number="10" name="What teams are saying" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {nexus.testimonials.map((testimonial) => (
+          <div key={testimonial.name} className="border border-line rounded-card p-6">
+            <p className="text-[15px] leading-relaxed mb-4">"{testimonial.quote}"</p>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-tile-lilac flex items-center justify-center font-mono text-[10px] uppercase tracking-[0.12em] text-ink">
+                {testimonial.name.split(' ').map(n => n[0]).join('')}
+              </div>
+              <div>
+                <div className="font-serif text-lg">{testimonial.name}</div>
+                <div className="text-xs text-muted">{testimonial.role}</div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function NexusPricing() {
+  return (
+    <div className="mt-12 bg-navy rounded-panel p-8 sm:p-12">
+      <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.12em] text-navy-muted">
+        <span className="text-accent">11</span> — Pricing tiers
+      </span>
+      <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl leading-[1.05] tracking-[-0.02em] text-paper mt-4">
+        Simple pricing.{" "}
+        <em className="italic text-accent font-serif">No tiny print.</em>
+      </h2>
+      <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
+        {nexus.pricing.map((plan) => (
+          <div key={plan.name} className={`rounded-card p-6 ${plan.highlight ? 'bg-paper text-ink' : 'bg-navy-line/20 text-paper'}`}>
+            <div className="font-serif text-2xl mb-2">{plan.name}</div>
+            <div className={`font-serif text-4xl mb-2 ${plan.highlight ? 'text-accent' : 'text-paper'}`}>{plan.price}</div>
+            <p className={`text-sm mb-4 ${plan.highlight ? 'text-ink/70' : 'text-navy-muted'}`}>{plan.blurb}</p>
+            <ul className="space-y-2">
+              {plan.features.map((feature) => (
+                <li key={feature} className={`text-sm flex items-start gap-2 ${plan.highlight ? 'text-ink/80' : 'text-navy-muted'}`}>
+                  <span className="text-accent mt-0.5">✓</span>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function CaseStudy() {
   const { slug } = useParams<{ slug: string }>();
   const study = caseStudies.find((c) => c.slug === slug);
@@ -456,7 +643,7 @@ export default function CaseStudy() {
       <div className="max-w-page mx-auto px-5 sm:px-6 lg:px-8">
         {/* Cover */}
         <Reveal>
-          {slug === "ironmark-construction" ? <IronmarkCover /> : slug === "meridian-hospital" ? <MeridianCover /> : <DeviceMockup color={data.panelColor} title={data.title} />}
+          {slug === "ironmark-construction" ? <IronmarkCover /> : slug === "meridian-hospital" ? <MeridianCover /> : slug === "nexus-workspace" ? <NexusCover /> : <DeviceMockup color={data.panelColor} title={data.title} />}
         </Reveal>
 
         {/* Meta */}
@@ -616,6 +803,27 @@ export default function CaseStudy() {
             </Reveal>
             <Reveal delay={560}>
               <MeridianValues />
+            </Reveal>
+          </>
+        )}
+
+        {/* Nexus-specific sections */}
+        {slug === "nexus-workspace" && (
+          <>
+            <Reveal delay={480}>
+              <NexusLivePreview />
+            </Reveal>
+            <Reveal delay={500}>
+              <NexusFeatures />
+            </Reveal>
+            <Reveal delay={520}>
+              <NexusStats />
+            </Reveal>
+            <Reveal delay={540}>
+              <NexusTestimonials />
+            </Reveal>
+            <Reveal delay={560}>
+              <NexusPricing />
             </Reveal>
           </>
         )}
