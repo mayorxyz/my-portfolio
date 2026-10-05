@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { SectionHeader, PillTag, TextLink, Reveal } from "../components/ui";
-import { caseStudies, projects, ironmark } from "../content";
-import { Building, Factory, Home, Route } from "lucide-react";
+import { caseStudies, projects, ironmark, meridian } from "../content";
+import { Building, Factory, Home, Route, Heart, Brain, Bone, Baby, HeartHandshake, Ribbon, Siren, ScanLine } from "lucide-react";
 
 function DeviceMockup({ color, title }: { color: string; title: string }) {
   return (
@@ -251,6 +251,164 @@ function IronmarkValues() {
   );
 }
 
+function getDeptIcon(icon: string) {
+  switch (icon) {
+    case "heart": return <Heart size={24} strokeWidth={1.5} />;
+    case "brain": return <Brain size={24} strokeWidth={1.5} />;
+    case "bone": return <Bone size={24} strokeWidth={1.5} />;
+    case "baby": return <Baby size={24} strokeWidth={1.5} />;
+    case "heart-handshake": return <HeartHandshake size={24} strokeWidth={1.5} />;
+    case "ribbon": return <Ribbon size={24} strokeWidth={1.5} />;
+    case "siren": return <Siren size={24} strokeWidth={1.5} />;
+    case "scan": return <ScanLine size={24} strokeWidth={1.5} />;
+    default: return <Heart size={24} strokeWidth={1.5} />;
+  }
+}
+
+function MeridianCover() {
+  return (
+    <div className="rounded-panel overflow-hidden relative bg-navy" style={{ aspectRatio: "16/9" }}>
+      <svg viewBox="0 0 800 450" className="w-full h-full" aria-label="Meridian Hospital illustration">
+        {/* Hospital building */}
+        <rect x="250" y="150" width="300" height="300" fill="#34425f" />
+        <rect x="280" y="180" width="60" height="80" fill="#9ba5ba" opacity="0.3" />
+        <rect x="370" y="180" width="60" height="80" fill="#9ba5ba" opacity="0.3" />
+        <rect x="460" y="180" width="60" height="80" fill="#9ba5ba" opacity="0.3" />
+        <rect x="280" y="290" width="60" height="80" fill="#9ba5ba" opacity="0.3" />
+        <rect x="370" y="290" width="60" height="80" fill="#9ba5ba" opacity="0.3" />
+        <rect x="460" y="290" width="60" height="80" fill="#9ba5ba" opacity="0.3" />
+
+        {/* Cross symbol */}
+        <rect x="385" y="100" width="30" height="80" fill="#e8613c" />
+        <rect x="360" y="125" width="80" height="30" fill="#e8613c" />
+
+        {/* Ground line */}
+        <line x1="0" y1="450" x2="800" y2="450" stroke="#9ba5ba" strokeWidth="2" />
+
+        {/* Trees */}
+        <circle cx="150" cy="380" r="40" fill="#34425f" opacity="0.6" />
+        <rect x="145" y="400" width="10" height="50" fill="#34425f" />
+        <circle cx="650" cy="380" r="40" fill="#34425f" opacity="0.6" />
+        <rect x="645" y="400" width="10" height="50" fill="#34425f" />
+
+        {/* HUD labels */}
+        <text x="20" y="30" fill="#9ba5ba" fontSize="10" fontFamily="JetBrains Mono, monospace">MERIDIAN GENERAL</text>
+        <text x="20" y="44" fill="#9ba5ba" fontSize="10" fontFamily="JetBrains Mono, monospace">EST. 1985</text>
+        <text x="640" y="30" fill="#9ba5ba" fontSize="10" fontFamily="JetBrains Mono, monospace">120 SPECIALISTS</text>
+        <text x="640" y="440" fill="#9ba5ba" fontSize="10" fontFamily="JetBrains Mono, monospace">250K+ PATIENTS</text>
+      </svg>
+    </div>
+  );
+}
+
+function MeridianLivePreview() {
+  return (
+    <div className="mt-12">
+      <SectionHeader number="07" name="Live preview" />
+      <div className="border border-line rounded-panel overflow-hidden">
+        <div className="bg-ink text-paper px-6 py-3 flex items-center justify-between">
+          <span className="font-mono text-[10px] uppercase tracking-[0.12em]">meridian-hospital-gray.vercel.app</span>
+          <a
+            href={meridian.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-mono text-[10px] uppercase tracking-[0.12em] text-accent hover:underline"
+          >
+            Open in new tab ↗
+          </a>
+        </div>
+        <div className="relative" style={{ height: "600px" }}>
+          <iframe
+            src={meridian.liveUrl}
+            title="MERIDIAN General Hospital - Live Preview"
+            className="w-full h-full border-0"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function MeridianDepartments() {
+  return (
+    <div className="mt-12">
+      <SectionHeader number="08" name="Medical departments" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {meridian.departments.map((dept) => (
+          <div key={dept.name} className="border border-line rounded-card p-6 hover:bg-ink/[0.02] transition-colors duration-180">
+            <div className="text-ink mb-3">{getDeptIcon(dept.icon)}</div>
+            <h3 className="font-serif text-2xl leading-[1.15] mb-2">{dept.name}</h3>
+            <p className="text-sm text-muted">{dept.blurb}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function MeridianDoctors() {
+  return (
+    <div className="mt-12">
+      <SectionHeader number="09" name="Featured specialists" />
+      <div className="space-y-0">
+        {meridian.featuredDoctors.map((doctor, i) => (
+          <div key={doctor.name} className="flex gap-6 py-4 border-t border-line">
+            <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.12em] text-accent shrink-0 pt-0.5 w-12">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-baseline gap-3 mb-1">
+                <h3 className="font-serif text-xl sm:text-2xl leading-[1.15]">{doctor.name}</h3>
+                <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-muted">{doctor.dept}</span>
+              </div>
+              <p className="text-sm text-muted">{doctor.title} · {doctor.years} years experience</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function MeridianOutcomes() {
+  return (
+    <div className="mt-12">
+      <SectionHeader number="10" name="Clinical outcomes" />
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+        {meridian.outcomes.map((outcome) => (
+          <div key={outcome.label} className="border border-line rounded-card p-6 text-center">
+            <div className="font-serif text-3xl sm:text-4xl text-ink">{outcome.value}</div>
+            <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-muted mt-2">{outcome.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function MeridianValues() {
+  return (
+    <div className="mt-12 bg-navy rounded-panel p-8 sm:p-12">
+      <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.12em] text-navy-muted">
+        <span className="text-accent">11</span> — Hospital values
+      </span>
+      <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl leading-[1.05] tracking-[-0.02em] text-paper mt-4">
+        Care that feels as{" "}
+        <em className="italic text-accent font-serif">good as it works.</em>
+      </h2>
+      <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {meridian.values.map((value) => (
+          <div key={value.label} className="border-t border-navy-line pt-4">
+            <div className="font-serif text-xl sm:text-2xl text-paper mb-2">{value.label}</div>
+            <p className="text-navy-muted text-sm">{value.sentence}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function CaseStudy() {
   const { slug } = useParams<{ slug: string }>();
   const study = caseStudies.find((c) => c.slug === slug);
@@ -298,7 +456,7 @@ export default function CaseStudy() {
       <div className="max-w-page mx-auto px-5 sm:px-6 lg:px-8">
         {/* Cover */}
         <Reveal>
-          {slug === "ironmark-construction" ? <IronmarkCover /> : <DeviceMockup color={data.panelColor} title={data.title} />}
+          {slug === "ironmark-construction" ? <IronmarkCover /> : slug === "meridian-hospital" ? <MeridianCover /> : <DeviceMockup color={data.panelColor} title={data.title} />}
         </Reveal>
 
         {/* Meta */}
@@ -437,6 +595,27 @@ export default function CaseStudy() {
             </Reveal>
             <Reveal delay={540}>
               <IronmarkValues />
+            </Reveal>
+          </>
+        )}
+
+        {/* Meridian-specific sections */}
+        {slug === "meridian-hospital" && (
+          <>
+            <Reveal delay={480}>
+              <MeridianLivePreview />
+            </Reveal>
+            <Reveal delay={500}>
+              <MeridianDepartments />
+            </Reveal>
+            <Reveal delay={520}>
+              <MeridianDoctors />
+            </Reveal>
+            <Reveal delay={540}>
+              <MeridianOutcomes />
+            </Reveal>
+            <Reveal delay={560}>
+              <MeridianValues />
             </Reveal>
           </>
         )}

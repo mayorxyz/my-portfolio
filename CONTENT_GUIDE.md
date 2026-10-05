@@ -157,9 +157,9 @@ Each case study needs:
 ```
 
 **Current case studies:**
-1. Ironmark Construction (Web) - ✅ Already detailed
-2. Orbit Market (Web)
-3. Fieldnotes (Mobile)
+1. Meridian Hospital (Web) - ✅ Already detailed
+2. Ironmark Construction (Web) - ✅ Already detailed
+3. Orbit Market (Web)
 
 ---
 
@@ -263,6 +263,62 @@ export const bio = "I'm Mayor, a full-stack developer...";
 1. Start small
 2. Stay close
 3. Leave it better
+
+---
+
+## 🏥 Meridian General Hospital (Special Project)
+
+**Location:** `meridian` object
+
+This project has additional detailed content:
+
+```typescript
+export const meridian = {
+  liveUrl: "https://meridian-hospital-gray.vercel.app/",
+  hospitalName: "MERIDIAN General Hospital",
+  tagline: "Clinical trust, designed.",
+  
+  stats: [                           // → 4 hospital stats
+    { value: "40+", label: "Years of care" },
+    // ...
+  ],
+  
+  departments: [                     // → 8 medical departments
+    {
+      name: "Cardiology",
+      icon: "heart",                 // → "heart" | "brain" | "bone" | "baby" | "heart-handshake" | "ribbon" | "siren" | "scan"
+      blurb: "Hearts are our thing."
+    },
+    // ...
+  ],
+  
+  featuredDoctors: [                 // → 4 featured doctors
+    {
+      name: "Dr. Amara Okonkwo",
+      title: "Consultant Cardiologist",
+      dept: "Cardiology",
+      years: 18
+    },
+    // ...
+  ],
+  
+  outcomes: [                        // → 4 clinical outcomes
+    {
+      label: "Cardiac surgery survival",
+      value: "98.2%"
+    },
+    // ...
+  ],
+  
+  values: [                          // → 4 hospital values
+    {
+      label: "Patients first",
+      sentence: "Every decision starts with..."
+    },
+    // ...
+  ]
+};
+```
 
 ---
 
