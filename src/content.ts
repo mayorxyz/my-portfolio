@@ -50,6 +50,7 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  { slug: "codex", title: "Codex", category: "Web", year: "2026", tagline: "A knowledge base that lives in your browser and compiles your notes on the fly.", tags: ["React", "TypeScript", "Vite", "Tailwind"], panelColor: "#c8bdf0", role: "Developer and designer", summary: "Built a fast, private knowledge base with full-text search, syntax highlighting, and a single render pipeline. Zero backend — everything runs in the browser with localStorage persistence." },
   { slug: "nexus-workspace", title: "Nexus Workspace", category: "Web", year: "2026", tagline: "A premium dark workspace where fast teams stop losing the plot.", tags: ["React", "TypeScript", "Tailwind", "Supabase"], panelColor: "#0a0a0a", role: "Lead developer & designer", summary: "Built a workspace and analytics platform with drag-and-drop boards, live dashboards, and real-time sync. Premium dark UI with smooth animations and a focus on developer experience." },
   { slug: "meridian-hospital", title: "Meridian Hospital", category: "Web", year: "2025", tagline: "Clinical trust, designed — a teaching hospital's digital front door.", tags: ["React", "TypeScript", "Tailwind", "Vite"], panelColor: "#1d2b47", role: "Lead developer & designer", summary: "Designed and built a patient-focused website for MERIDIAN General Hospital. Features a cost estimator, doctor directory, department showcase, and a calm, trustworthy design language." },
   { slug: "ironmark-construction", title: "Ironmark Construction", category: "Web", year: "2025", tagline: "A bold digital presence for 25 years of building what stays standing.", tags: ["React", "TypeScript", "Tailwind", "Vite"], panelColor: "#1d2b47", role: "Lead developer & designer", summary: "Designed and built a full marketing website for Ironmark Construction Group. Editorial style, component architecture, and a live preview that lets visitors explore the real site." },
@@ -85,6 +86,55 @@ export interface CaseStudy {
 }
 
 export const caseStudies: CaseStudy[] = [
+  {
+    slug: "codex",
+    title: "Codex",
+    category: "Web",
+    year: "2026",
+    stack: ["React", "TypeScript", "Vite", "Tailwind", "Marked", "Prism"],
+    timeline: "Personal project",
+    platform: "Web",
+    role: "Developer and designer",
+    problem: "Engineers keep postmortems, snippets and how-tos in places that are slow, locked behind accounts or hard to search. The goal was a fast, private knowledge base: write in Markdown, search everything instantly, and keep the data on your own machine.",
+    approach: [
+      "One render pipeline powers every view — library, reader, composer preview, playground, and guide all use the same Markdown compiler, so everything looks and behaves consistently.",
+      "Local-first by design. Entries live in localStorage with JSON backup and restore. No backend means no sign-up, no latency, and nothing to leak.",
+      "Reading that feels good. Auto-generated table of contents, reading progress tracking, reading-time estimates, syntax highlighting, and one-click copy on every code block.",
+    ],
+    architectureNodes: [
+      { id: "built", label: "Built-in Articles", x: 80, y: 80 },
+      { id: "import", label: "Imported Markdown", x: 80, y: 280 },
+      { id: "composer", label: "Composer", x: 240, y: 280 },
+      { id: "app", label: "App State", x: 320, y: 180 },
+      { id: "views", label: "Library / Reader", x: 520, y: 80 },
+      { id: "storage", label: "localStorage", x: 520, y: 280 },
+      { id: "render", label: "renderCached()", x: 700, y: 80 },
+      { id: "marked", label: "Marked + Prism", x: 700, y: 200 },
+    ],
+    architectureEdges: [["built", "app"], ["import", "composer"], ["composer", "app"], ["app", "views"], ["app", "storage"], ["views", "render"], ["render", "marked"]],
+    stats: [
+      { value: "0", label: "Backend dependencies" },
+      { value: "6", label: "Deep-linkable routes" },
+      { value: "100%", label: "Data stays local" },
+    ],
+    chartA: [
+      { month: "Jan", value: 0 }, { month: "Feb", value: 0 }, { month: "Mar", value: 0 },
+      { month: "Apr", value: 0 }, { month: "May", value: 0 }, { month: "Jun", value: 0 },
+      { month: "Jul", value: 0 }, { month: "Aug", value: 0 }, { month: "Sep", value: 0 },
+      { month: "Oct", value: 0 }, { month: "Nov", value: 0 }, { month: "Dec", value: 0 },
+    ],
+    chartB: [
+      { category: "Speed", value: 100 }, { category: "A11y", value: 100 },
+      { category: "Best Prac", value: 100 }, { category: "SEO", value: 100 },
+      { category: "PWA", value: 100 },
+    ],
+    nextSteps: [
+      "Add automated tests with Vitest and Playwright",
+      "Explore optional cloud sync while keeping local-first as default",
+      "Export entries as Markdown files alongside JSON backup",
+    ],
+    panelColor: "#c8bdf0",
+  },
   {
     slug: "nexus-workspace",
     title: "Nexus Workspace",
@@ -391,6 +441,55 @@ export const principles = [
   { label: "Measure first", sentence: "Decisions start with data, not opinions." },
   { label: "Write it down", sentence: "If it isn't documented, it doesn't exist." },
 ];
+
+// ─── CODEX KNOWLEDGE BASE ────────────────────────────────
+export const codex = {
+  liveUrl: "https://codex-iota-six.vercel.app/#/",
+  productName: "Codex",
+  tagline: "A knowledge base that lives in your browser and compiles your notes on the fly.",
+  description: "A fast, private knowledge base. Write in Markdown, search everything instantly, and keep the data on your own machine.",
+  heroStats: [
+    { value: "6", label: "Routes", detail: "Library, reader, composer, editor, playground, guide." },
+    { value: "0", label: "Backend services", detail: "No database, no API, no credentials." },
+    { value: "1", label: "Render pipeline", detail: "One Markdown engine behind every view." },
+  ],
+  features: [
+    { icon: "search", title: "Full-text search", blurb: "Finds matches in titles, descriptions, tags and the article body." },
+    { icon: "tags", title: "Tag filtering", blurb: "Narrow the library to one topic in a click." },
+    { icon: "list-tree", title: "Live table of contents", blurb: "Built from H2 and H3 headings, tracking where you are as you scroll." },
+    { icon: "copy", title: "Copyable code blocks", blurb: "Prism highlighting for TS, JS, shell, YAML and more, with one-click copy." },
+    { icon: "moon", title: "Light and dark themes", blurb: "Your choice is remembered between visits." },
+    { icon: "download", title: "JSON backup", blurb: "Export everything to a dated file and restore it any time." },
+  ],
+  pipeline: [
+    { step: "01", label: "Source", detail: "Built-in article or user Markdown." },
+    { step: "02", label: "Lex", detail: "Marked builds tokens, the table of contents and stats." },
+    { step: "03", label: "Highlight", detail: "Prism colours each fenced code block." },
+    { step: "04", label: "Cache", detail: "renderCached() stores the HTML by key." },
+    { step: "05", label: "Display", detail: "Library, reader, preview and playground show the result." },
+  ],
+  decisions: [
+    { title: "Build tool", choice: "Vite", why: "Fast dev server and simple static builds." },
+    { title: "Language", choice: "React + TypeScript", why: "Component composition with compile-time contracts." },
+    { title: "Markdown", choice: "Marked + Prism", why: "Small, familiar and easy to extend." },
+    { title: "Routing", choice: "Hash routes", why: "Deep links work on static hosts with no rewrites." },
+    { title: "Storage", choice: "localStorage", why: "Private, zero-backend persistence." },
+    { title: "Rendering", choice: "One shared pipeline", why: "Every view behaves the same and there's less to maintain." },
+  ],
+  limits: [
+    { value: "220", suffix: " wpm", label: "Reading speed model", detail: "Plus 2.2 seconds per line of code." },
+    { value: "110", suffix: " ms", label: "Playground debounce", detail: "Recompiles shortly after you stop typing." },
+    { value: "8", label: "Tags per entry", detail: "Keeps cards tidy." },
+    { value: "2.8", suffix: " s", label: "Toast lifetime", detail: "Short enough to stay out of the way." },
+  ],
+  screens: [
+    { id: "library", title: "Library", route: "#/", caption: "Search across titles, descriptions, tags and article bodies." },
+    { id: "reader", title: "Reader", route: "#/article/:slug", caption: "Read or view source, with a reading progress rail and a live table of contents." },
+    { id: "composer", title: "Composer", route: "#/composer", caption: "Write or import Markdown with a live preview and frontmatter support." },
+    { id: "playground", title: "Playground", route: "#/playground", caption: "Type Markdown and watch the compiler stats update as you go." },
+    { id: "guide", title: "Guide", route: "#/guide", caption: "The in-app docs are Markdown too, rendered by the same pipeline." },
+  ],
+};
 
 // ─── NEXUS WORKSPACE ─────────────────────────────────────
 export const nexus = {

@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { SectionHeader, PillTag, TextLink, Reveal } from "../components/ui";
-import { caseStudies, projects, ironmark, meridian, nexus } from "../content";
-import { Building, Factory, Home, Route, Heart, Brain, Bone, Baby, HeartHandshake, Ribbon, Siren, ScanLine, LayoutGrid, BarChart3, ShieldCheck, Zap, Sparkles, PartyPopper } from "lucide-react";
+import { caseStudies, projects, ironmark, meridian, nexus, codex } from "../content";
+import { Building, Factory, Home, Route, Heart, Brain, Bone, Baby, HeartHandshake, Ribbon, Siren, ScanLine, LayoutGrid, BarChart3, ShieldCheck, Zap, Sparkles, PartyPopper, Search, Tags, ListTree, Copy, Moon, Download } from "lucide-react";
 
 function DeviceMockup({ color, title }: { color: string; title: string }) {
   return (
@@ -596,6 +596,212 @@ function NexusPricing() {
   );
 }
 
+function getCodexIcon(icon: string) {
+  switch (icon) {
+    case "search": return <Search size={24} strokeWidth={1.5} />;
+    case "tags": return <Tags size={24} strokeWidth={1.5} />;
+    case "list-tree": return <ListTree size={24} strokeWidth={1.5} />;
+    case "copy": return <Copy size={24} strokeWidth={1.5} />;
+    case "moon": return <Moon size={24} strokeWidth={1.5} />;
+    case "download": return <Download size={24} strokeWidth={1.5} />;
+    default: return <Search size={24} strokeWidth={1.5} />;
+  }
+}
+
+function CodexCover() {
+  return (
+    <div className="rounded-panel overflow-hidden relative bg-tile-lilac" style={{ aspectRatio: "16/9" }}>
+      <svg viewBox="0 0 800 450" className="w-full h-full" aria-label="Codex knowledge base illustration">
+        {/* Background */}
+        <rect width="800" height="450" fill="#c8bdf0" />
+        
+        {/* Article cards */}
+        <rect x="60" y="80" width="200" height="280" rx="12" fill="#f1efe7" stroke="#d8d5ca" strokeWidth="1" />
+        <rect x="280" y="80" width="200" height="280" rx="12" fill="#f1efe7" stroke="#d8d5ca" strokeWidth="1" />
+        <rect x="500" y="80" width="200" height="280" rx="12" fill="#f1efe7" stroke="#d8d5ca" strokeWidth="1" />
+        
+        {/* Article content lines */}
+        <rect x="80" y="100" width="160" height="8" rx="2" fill="#141414" opacity="0.8" />
+        <rect x="80" y="120" width="140" height="6" rx="2" fill="#6b6a64" opacity="0.6" />
+        <rect x="80" y="135" width="150" height="6" rx="2" fill="#6b6a64" opacity="0.6" />
+        <rect x="80" y="150" width="130" height="6" rx="2" fill="#6b6a64" opacity="0.6" />
+        
+        {/* Code block in first card */}
+        <rect x="80" y="180" width="160" height="60" rx="4" fill="#141414" />
+        <rect x="90" y="195" width="80" height="4" rx="1" fill="#e8613c" opacity="0.8" />
+        <rect x="90" y="205" width="100" height="4" rx="1" fill="#9ba5ba" opacity="0.6" />
+        <rect x="90" y="215" width="60" height="4" rx="1" fill="#9ba5ba" opacity="0.6" />
+        <rect x="90" y="225" width="90" height="4" rx="1" fill="#9ba5ba" opacity="0.6" />
+        
+        {/* Tags */}
+        <rect x="80" y="260" width="50" height="20" rx="10" fill="#e8613c" opacity="0.2" />
+        <rect x="140" y="260" width="60" height="20" rx="10" fill="#1d2b47" opacity="0.2" />
+        
+        {/* Second card content */}
+        <rect x="300" y="100" width="160" height="8" rx="2" fill="#141414" opacity="0.8" />
+        <rect x="300" y="120" width="140" height="6" rx="2" fill="#6b6a64" opacity="0.6" />
+        <rect x="300" y="135" width="150" height="6" rx="2" fill="#6b6a64" opacity="0.6" />
+        <rect x="300" y="150" width="130" height="6" rx="2" fill="#6b6a64" opacity="0.6" />
+        <rect x="300" y="180" width="160" height="60" rx="4" fill="#141414" />
+        <rect x="310" y="195" width="70" height="4" rx="1" fill="#e8613c" opacity="0.8" />
+        <rect x="310" y="205" width="90" height="4" rx="1" fill="#9ba5ba" opacity="0.6" />
+        <rect x="310" y="215" width="50" height="4" rx="1" fill="#9ba5ba" opacity="0.6" />
+        <rect x="310" y="225" width="80" height="4" rx="1" fill="#9ba5ba" opacity="0.6" />
+        
+        {/* Third card content */}
+        <rect x="520" y="100" width="160" height="8" rx="2" fill="#141414" opacity="0.8" />
+        <rect x="520" y="120" width="140" height="6" rx="2" fill="#6b6a64" opacity="0.6" />
+        <rect x="520" y="135" width="150" height="6" rx="2" fill="#6b6a64" opacity="0.6" />
+        <rect x="520" y="150" width="130" height="6" rx="2" fill="#6b6a64" opacity="0.6" />
+        <rect x="520" y="180" width="160" height="60" rx="4" fill="#141414" />
+        <rect x="530" y="195" width="60" height="4" rx="1" fill="#e8613c" opacity="0.8" />
+        <rect x="530" y="205" width="80" height="4" rx="1" fill="#9ba5ba" opacity="0.6" />
+        <rect x="530" y="215" width="40" height="4" rx="1" fill="#9ba5ba" opacity="0.6" />
+        <rect x="530" y="225" width="70" height="4" rx="1" fill="#9ba5ba" opacity="0.6" />
+        
+        {/* Search bar */}
+        <rect x="200" y="380" width="400" height="40" rx="20" fill="#f1efe7" stroke="#d8d5ca" strokeWidth="1" />
+        <circle cx="220" cy="400" r="8" fill="none" stroke="#6b6a64" strokeWidth="1.5" />
+        <line x1="226" y1="406" x2="232" y2="412" stroke="#6b6a64" strokeWidth="1.5" />
+        <rect x="240" y="395" width="100" height="6" rx="2" fill="#6b6a64" opacity="0.4" />
+        
+        {/* HUD labels */}
+        <text x="20" y="30" fill="#141414" fontSize="10" fontFamily="JetBrains Mono, monospace" opacity="0.6">CODEX</text>
+        <text x="20" y="44" fill="#141414" fontSize="10" fontFamily="JetBrains Mono, monospace" opacity="0.6">LOCAL-FIRST</text>
+        <text x="700" y="30" fill="#141414" fontSize="10" fontFamily="JetBrains Mono, monospace" opacity="0.6">MARKDOWN</text>
+        <text x="700" y="440" fill="#141414" fontSize="10" fontFamily="JetBrains Mono, monospace" opacity="0.6">ZERO BACKEND</text>
+      </svg>
+    </div>
+  );
+}
+
+function CodexLivePreview() {
+  return (
+    <div className="mt-12">
+      <SectionHeader number="07" name="Live preview" />
+      <div className="border border-line rounded-panel overflow-hidden">
+        <div className="bg-ink text-paper px-6 py-3 flex items-center justify-between">
+          <span className="font-mono text-[10px] uppercase tracking-[0.12em]">codex-iota-six.vercel.app</span>
+          <a
+            href={codex.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-mono text-[10px] uppercase tracking-[0.12em] text-accent hover:underline"
+          >
+            Open in new tab ↗
+          </a>
+        </div>
+        <div className="relative" style={{ height: "600px" }}>
+          <iframe
+            src={codex.liveUrl}
+            title="Codex Knowledge Base - Live Preview"
+            className="w-full h-full border-0"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CodexFeatures() {
+  return (
+    <div className="mt-12">
+      <SectionHeader number="08" name="Key features" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {codex.features.map((feature) => (
+          <div key={feature.title} className="border border-line rounded-card p-6 hover:bg-ink/[0.02] transition-colors duration-180">
+            <div className="text-ink mb-3">{getCodexIcon(feature.icon)}</div>
+            <h3 className="font-serif text-2xl leading-[1.15] mb-2">{feature.title}</h3>
+            <p className="text-sm text-muted">{feature.blurb}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function CodexPipeline() {
+  return (
+    <div className="mt-12">
+      <SectionHeader number="09" name="Render pipeline" />
+      <div className="space-y-0">
+        {codex.pipeline.map((step, i) => (
+          <div key={step.step} className="flex gap-6 py-4 border-t border-line">
+            <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.12em] text-accent shrink-0 pt-0.5 w-12">
+              {step.step}
+            </span>
+            <div className="flex-1 min-w-0">
+              <div className="font-serif text-xl sm:text-2xl leading-[1.15] mb-1">{step.label}</div>
+              <p className="text-sm text-muted">{step.detail}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function CodexDecisions() {
+  return (
+    <div className="mt-12">
+      <SectionHeader number="10" name="Technical decisions" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {codex.decisions.map((decision) => (
+          <div key={decision.title} className="border border-line rounded-card p-6">
+            <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-muted mb-2">{decision.title}</div>
+            <div className="font-serif text-2xl leading-[1.15] mb-2">{decision.choice}</div>
+            <p className="text-sm text-muted">{decision.why}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function CodexLimits() {
+  return (
+    <div className="mt-12">
+      <SectionHeader number="11" name="Design constraints" />
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+        {codex.limits.map((limit) => (
+          <div key={limit.label} className="border border-line rounded-card p-6 text-center">
+            <div className="font-serif text-3xl sm:text-4xl text-ink">
+              {limit.value}
+              <span className="text-lg">{limit.suffix}</span>
+            </div>
+            <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-muted mt-2">{limit.label}</div>
+            <p className="text-xs text-muted mt-2">{limit.detail}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function CodexScreens() {
+  return (
+    <div className="mt-12">
+      <SectionHeader number="12" name="Application views" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {codex.screens.map((screen) => (
+          <div key={screen.id} className="border border-line rounded-card overflow-hidden">
+            <div className="bg-tile-lilac p-8 flex items-center justify-center" style={{ aspectRatio: "4/3" }}>
+              <div className="text-center">
+                <div className="font-serif text-2xl text-ink mb-2">{screen.title}</div>
+                <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-muted">{screen.route}</div>
+              </div>
+            </div>
+            <div className="p-4">
+              <p className="text-sm text-muted">{screen.caption}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function CaseStudy() {
   const { slug } = useParams<{ slug: string }>();
   const study = caseStudies.find((c) => c.slug === slug);
@@ -643,7 +849,7 @@ export default function CaseStudy() {
       <div className="max-w-page mx-auto px-5 sm:px-6 lg:px-8">
         {/* Cover */}
         <Reveal>
-          {slug === "ironmark-construction" ? <IronmarkCover /> : slug === "meridian-hospital" ? <MeridianCover /> : slug === "nexus-workspace" ? <NexusCover /> : <DeviceMockup color={data.panelColor} title={data.title} />}
+          {slug === "ironmark-construction" ? <IronmarkCover /> : slug === "meridian-hospital" ? <MeridianCover /> : slug === "nexus-workspace" ? <NexusCover /> : slug === "codex" ? <CodexCover /> : <DeviceMockup color={data.panelColor} title={data.title} />}
         </Reveal>
 
         {/* Meta */}
@@ -824,6 +1030,30 @@ export default function CaseStudy() {
             </Reveal>
             <Reveal delay={560}>
               <NexusPricing />
+            </Reveal>
+          </>
+        )}
+
+        {/* Codex-specific sections */}
+        {slug === "codex" && (
+          <>
+            <Reveal delay={480}>
+              <CodexLivePreview />
+            </Reveal>
+            <Reveal delay={500}>
+              <CodexFeatures />
+            </Reveal>
+            <Reveal delay={520}>
+              <CodexPipeline />
+            </Reveal>
+            <Reveal delay={540}>
+              <CodexDecisions />
+            </Reveal>
+            <Reveal delay={560}>
+              <CodexLimits />
+            </Reveal>
+            <Reveal delay={580}>
+              <CodexScreens />
             </Reveal>
           </>
         )}
