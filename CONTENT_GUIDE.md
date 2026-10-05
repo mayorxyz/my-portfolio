@@ -80,14 +80,14 @@ Replace each project with your real projects:
 ```
 
 **Current placeholders:**
-1. Nexus Workspace - Workspace platform (Web) - ✅ Already detailed
-2. Meridian Hospital - Hospital website (Web) - ✅ Already detailed
-3. Ironmark Construction - Construction company (Web) - ✅ Already detailed
-4. Orbit Market - Marketplace (Web)
-5. Fieldnotes - Journaling app (Mobile)
-6. Lumen AI - Writing assistant (AI)
-7. GridOps - Monitoring dashboard (Systems)
-8. Canopy CMS - Headless CMS (Web)
+1. Codex - Knowledge base (Web) - ✅ Already detailed
+2. Nexus Workspace - Workspace platform (Web) - ✅ Already detailed
+3. Meridian Hospital - Hospital website (Web) - ✅ Already detailed
+4. Ironmark Construction - Construction company (Web) - ✅ Already detailed
+5. Orbit Market - Marketplace (Web)
+6. Fieldnotes - Journaling app (Mobile)
+7. Lumen AI - Writing assistant (AI)
+8. GridOps - Monitoring dashboard (Systems)
 
 ---
 
@@ -155,10 +155,11 @@ Each case study needs:
 ```
 
 **Current case studies:**
-1. Nexus Workspace (Web) - ✅ Already detailed
-2. Meridian Hospital (Web) - ✅ Already detailed
-3. Ironmark Construction (Web) - ✅ Already detailed
-4. Orbit Market (Web)
+1. Codex (Web) - ✅ Already detailed
+2. Nexus Workspace (Web) - ✅ Already detailed
+3. Meridian Hospital (Web) - ✅ Already detailed
+4. Ironmark Construction (Web) - ✅ Already detailed
+5. Orbit Market (Web)
 
 ---
 
@@ -262,6 +263,75 @@ export const bio = "I'm Mayor, a full-stack developer...";
 1. Start small
 2. Stay close
 3. Leave it better
+
+---
+
+## 📚 Codex Knowledge Base (Special Project)
+
+**Location:** `codex` object
+
+This project has additional detailed content:
+
+```typescript
+export const codex = {
+  liveUrl: "https://codex-iota-six.vercel.app/#/",
+  productName: "Codex",
+  tagline: "A knowledge base that lives in your browser.",
+  description: "A fast, private knowledge base with full-text search and syntax highlighting.",
+  
+  heroStats: [                       // → 3 hero statistics
+    { value: "6", label: "Routes", detail: "Library, reader, composer..." },
+    // ...
+  ],
+  
+  features: [                        // → 6 key features
+    {
+      icon: "search",                // → "search" | "tags" | "list-tree" | "copy" | "moon" | "download"
+      title: "Full-text search",
+      blurb: "Finds matches in titles, descriptions..."
+    },
+    // ...
+  ],
+  
+  pipeline: [                        // → 5 pipeline steps
+    {
+      step: "01",
+      label: "Source",
+      detail: "Built-in article or user Markdown."
+    },
+    // ...
+  ],
+  
+  decisions: [                       // → 6 technical decisions
+    {
+      title: "Build tool",
+      choice: "Vite",
+      why: "Fast dev server and simple static builds."
+    },
+    // ...
+  ],
+  
+  limits: [                          // → 4 design constraints
+    {
+      value: "220",
+      suffix: " wpm",
+      label: "Reading speed model",
+      detail: "Plus 2.2 seconds per line of code."
+    },
+    // ...
+  ],
+  
+  screens: [                         // → 5 application views
+    {
+      id: "library",
+      title: "Library",
+      route: "#/",
+      caption: "Search across titles, descriptions..."
+    },
+    // ...
+  ]
+};
+```
 
 ---
 
