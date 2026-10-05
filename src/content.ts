@@ -50,6 +50,7 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  { slug: "meridian-hospital", title: "Meridian Hospital", category: "Web", year: "2025", tagline: "Clinical trust, designed — a teaching hospital's digital front door.", tags: ["React", "TypeScript", "Tailwind", "Vite"], panelColor: "#1d2b47", role: "Lead developer & designer", summary: "Designed and built a patient-focused website for MERIDIAN General Hospital. Features a cost estimator, doctor directory, department showcase, and a calm, trustworthy design language." },
   { slug: "ironmark-construction", title: "Ironmark Construction", category: "Web", year: "2025", tagline: "A bold digital presence for 25 years of building what stays standing.", tags: ["React", "TypeScript", "Tailwind", "Vite"], panelColor: "#1d2b47", role: "Lead developer & designer", summary: "Designed and built a full marketing website for Ironmark Construction Group. Editorial style, component architecture, and a live preview that lets visitors explore the real site." },
   { slug: "orbit-market", title: "Orbit Market", category: "Web", year: "2026", tagline: "A peer-to-peer marketplace for local artisans and makers.", tags: ["React", "Node", "Postgres", "Stripe"], panelColor: "#e8855a", role: "Lead developer", summary: "Built a marketplace connecting 200+ local artisans with buyers. Focused on fast load times, simple checkout, and a clean seller dashboard." },
   { slug: "fieldnotes-app", title: "Fieldnotes", category: "Mobile", year: "2025", tagline: "Offline-first journaling app for researchers in remote areas.", tags: ["Flutter", "SQLite", "Dart"], panelColor: "#a9d6c9", role: "Solo developer", summary: "Designed and shipped a journaling app that works fully offline and syncs when connected. Used by 12 field researchers across three countries." },
@@ -83,6 +84,53 @@ export interface CaseStudy {
 }
 
 export const caseStudies: CaseStudy[] = [
+  {
+    slug: "meridian-hospital",
+    title: "MERIDIAN General Hospital",
+    category: "Web",
+    year: "2025",
+    stack: ["React", "TypeScript", "Tailwind", "Vite"],
+    timeline: "4 months",
+    platform: "Web",
+    role: "Lead developer & designer",
+    problem: "MERIDIAN General Hospital had 40 years of clinical excellence but a digital presence that felt outdated and intimidating. Patients struggled to find doctors, understand costs, or book appointments. The site needed to convey trust and calm while making complex healthcare information accessible and actionable.",
+    approach: [
+      "Designed a patient-first information architecture that puts the most common tasks (find a doctor, understand costs, book appointments) front and center. Every page answers the question 'What do I do next?'",
+      "Built interactive tools like the cost estimator and doctor directory that give patients real utility, not just marketing copy. These features drive engagement and reduce phone calls to the front desk.",
+      "Created a calm, trustworthy visual language with soft colors, generous whitespace, and clear typography. The design lowers anxiety and makes the hospital feel approachable, not clinical.",
+    ],
+    architectureNodes: [
+      { id: "client", label: "React SPA", x: 100, y: 200 },
+      { id: "router", label: "React Router", x: 280, y: 200 },
+      { id: "components", label: "Components", x: 450, y: 120 },
+      { id: "data", label: "Content Data", x: 450, y: 280 },
+      { id: "styles", label: "Tailwind CSS", x: 280, y: 60 },
+      { id: "tools", label: "Interactive Tools", x: 280, y: 340 },
+    ],
+    architectureEdges: [["client", "router"], ["router", "components"], ["client", "data"], ["components", "styles"], ["client", "tools"]],
+    stats: [
+      { value: "100%", label: "Mobile responsive" },
+      { value: "97+", label: "Lighthouse score" },
+      { value: "4mo", label: "Delivery time" },
+    ],
+    chartA: [
+      { month: "Jan", value: 0 }, { month: "Feb", value: 20 }, { month: "Mar", value: 45 },
+      { month: "Apr", value: 65 }, { month: "May", value: 78 }, { month: "Jun", value: 88 },
+      { month: "Jul", value: 92 }, { month: "Aug", value: 95 }, { month: "Sep", value: 96 },
+      { month: "Oct", value: 96 }, { month: "Nov", value: 96 }, { month: "Dec", value: 96 },
+    ],
+    chartB: [
+      { category: "Speed", value: 98 }, { category: "A11y", value: 100 },
+      { category: "Best Prac", value: 100 }, { category: "SEO", value: 95 },
+      { category: "PWA", value: 90 },
+    ],
+    nextSteps: [
+      "Add online appointment booking with calendar integration",
+      "Implement patient portal for medical records access",
+      "Add multi-language support for diverse patient population",
+    ],
+    panelColor: "#1d2b47",
+  },
   {
     slug: "ironmark-construction",
     title: "Ironmark Construction Group",
@@ -295,6 +343,47 @@ export const principles = [
   { label: "Measure first", sentence: "Decisions start with data, not opinions." },
   { label: "Write it down", sentence: "If it isn't documented, it doesn't exist." },
 ];
+
+// ─── MERIDIAN GENERAL HOSPITAL ───────────────────────────
+export const meridian = {
+  liveUrl: "https://meridian-hospital-gray.vercel.app/",
+  hospitalName: "MERIDIAN General Hospital",
+  tagline: "Clinical trust, designed.",
+  stats: [
+    { value: "40+", label: "Years of care" },
+    { value: "120", label: "Specialist doctors" },
+    { value: "250k+", label: "Patients treated" },
+    { value: "96%", label: "Patient satisfaction" },
+  ],
+  departments: [
+    { name: "Cardiology", icon: "heart", blurb: "Hearts are our thing. Literally." },
+    { name: "Neurology", icon: "brain", blurb: "Big brains for the brain." },
+    { name: "Orthopaedics", icon: "bone", blurb: "Get back to the things you love." },
+    { name: "Paediatrics", icon: "baby", blurb: "Small patients, big personalities." },
+    { name: "Maternity", icon: "heart-handshake", blurb: "Welcome to the world, little one." },
+    { name: "Oncology", icon: "ribbon", blurb: "Expert treatment, people in your corner." },
+    { name: "Emergency", icon: "siren", blurb: "Open at 3am. Ready at 3am." },
+    { name: "Diagnostics", icon: "scan", blurb: "Answers, fast." },
+  ],
+  featuredDoctors: [
+    { name: "Dr. Amara Okonkwo", title: "Consultant Cardiologist", dept: "Cardiology", years: 18 },
+    { name: "Dr. Priya Nair", title: "Consultant Neurologist", dept: "Neurology", years: 15 },
+    { name: "Dr. Samuel Adeyemi", title: "Orthopaedic Surgeon", dept: "Orthopaedics", years: 12 },
+    { name: "Dr. Elena Rossi", title: "Consultant Paediatrician", dept: "Paediatrics", years: 14 },
+  ],
+  values: [
+    { label: "Patients first", sentence: "Every decision starts with the person in the bed." },
+    { label: "Honest by default", sentence: "Clear prices, clear outcomes, clear conversations." },
+    { label: "Calm is a skill", sentence: "We design spaces and routines that lower the temperature." },
+    { label: "Always learning", sentence: "We're a teaching hospital. Curiosity is part of the job." },
+  ],
+  outcomes: [
+    { label: "Cardiac surgery survival", value: "98.2%" },
+    { label: "Stroke patients treated < 60min", value: "91%" },
+    { label: "30-day readmission rate", value: "4.1%" },
+    { label: "Infection rate", value: "0.8%" },
+  ],
+};
 
 // ─── IRONMARK CONSTRUCTION ───────────────────────────────
 export const ironmark = {
