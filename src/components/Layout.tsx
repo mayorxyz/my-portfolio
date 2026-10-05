@@ -64,6 +64,12 @@ export function Footer() {
   );
 }
 
+const navItems = [
+  { path: "/", label: "Home" },
+  { path: "/work", label: "Work" },
+  { path: "/about", label: "About" },
+];
+
 export function FloatingNav() {
   const [hidden, setHidden] = useState(false);
   const location = useLocation();
@@ -84,20 +90,55 @@ export function FloatingNav() {
       aria-label="Quick navigation"
       animate={{ opacity: hidden ? 0 : 1, y: hidden ? 16 : 0 }}
       transition={{ duration: 0.25, ease: "easeOut" }}
-      className="fixed bottom-6 left-1/2 -translate-x-1/2 z-10 flex items-center gap-1 h-12 px-1.5 rounded-pill bg-paper border border-line shadow-float"
+      className="fixed bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-1 sm:gap-1.5 h-12 sm:h-13 px-1.5 sm:px-2 rounded-full bg-paper/90 backdrop-blur-md border border-line shadow-float max-w-[calc(100vw-2rem)] sm:max-w-none overflow-x-auto no-scrollbar"
     >
-      <Link to="/" className="px-3.5 font-sans text-sm font-medium text-ink rounded-pill hover:bg-ink/5 transition-colors duration-180">
-        Home
-      </Link>
-      <Link to="/work" className="px-3.5 font-sans text-sm font-medium text-ink rounded-pill hover:bg-ink/5 transition-colors duration-180">
-        Work
-      </Link>
-      <Link to="/about" className="px-3.5 font-sans text-sm font-medium text-ink rounded-pill hover:bg-ink/5 transition-colors duration-180">
-        About
-      </Link>
-      <Link to="/contact" className="px-4 h-9 flex items-center rounded-pill bg-ink text-paper font-sans text-sm font-medium hover:bg-ink/85 transition-colors duration-180">
-        Book a call
-      </Link>
+      {navItems.map((item) => {
+        const isActive = location.pathname === item.path;
+
+        return (
+          <Link
+            key={item.path}
+            to={item.path}
+            aria-current={isActive ? "page" : undefined}
+            className={`relative px-3 sm:px-4 py-1.5 sm:py-2 font-sans text-xs sm:text-sm font-medium transition-colors duration-180 z-10 whitespace-nowrap ${
+              isActive ? "text-ink" : "text-ink/70 hover:text-ink"
+            }`}
+          >
+            {isActive && (
+              <motion.div
+                layoutId="nav-pill"
+                className="absolute inset-0 bg-ink/10 rounded-full -z-10"
+                transition={{ type: "spring", stiffness: 380, damping: 30 }}
+              />
+            )}
+            {item.label}
+          </Link>
+        );
+      })}
+
+      {/* Divider */}
+      <div className="w-[1px] h-4 sm:h-5 bg-line mx-0.5 shrink-0" aria-hidden="true" />
+
+      {/* CTA Button */}
+      <motion.div whileTap={{ scale: 0.95 }} className="shrink-0">
+        <Link
+          to="/contact"
+          className={`relative px-3.5 sm:px-4 h-8 sm:h-9 flex items-center rounded-full font-sans text-xs sm:text-sm font-medium transition-all duration-180 whitespace-nowrap ${
+            location.pathname === "/contact"
+              ? "bg-ink text-paper shadow-sm"
+              : "bg-ink text-paper hover:bg-ink/85"
+          }`}
+        >
+          {location.pathname === "/contact" && (
+            <motion.div
+              layoutId="nav-pill"
+              className="absolute inset-0 bg-ink rounded-full -z-10"
+              transition={{ type: "spring", stiffness: 380, damping: 30 }}
+            />
+          )}
+          Book a call
+        </Link>
+      </motion.div>
     </motion.nav>
   );
 }
@@ -106,7 +147,7 @@ export function SkipLink() {
   return (
     <a
       href="#main-content"
-      className="fixed left-4 -top-12 z-20 px-3.5 py-2 bg-paper border border-line rounded-pill font-sans text-sm font-medium text-ink focus:top-4 transition-all duration-250"
+      className="fixed left-4 -top-12 z-40 px-3.5 py-2 bg-paper border border-line rounded-pill font-sans text-sm font-medium text-ink focus:top-4 transition-all duration-250 shadow-md"
     >
       Skip to content
     </a>
@@ -150,7 +191,7 @@ function SectionIndicator() {
   if (!current) return null;
 
   return (
-    <div className="fixed top-24 right-4 sm:right-8 z-10 font-mono text-[12px] uppercase tracking-[0.12em] text-muted pointer-events-none">
+    <div className="fixed top-24 right-4 sm:right-8 z-20 font-mono text-[12px] uppercase tracking-[0.12em] text-muted pointer-events-none hidden md:block">
       <span className="text-accent">{current.number}</span> — {current.name}
     </div>
   );
@@ -162,21 +203,22 @@ export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <SkipLink />
-      <Header />
+      {/* <Header /> */}
       <SectionIndicator />
       <AnimatePresence mode="wait">
         <motion.main
           key={location.pathname}
           id="main-content"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.25 }}
+          initial={{ opacity: 0, y: 4 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -4 }}
+          transition={{ duration: 0.2, ease: "easeInOut" }}
+          className="min-h-screen pb-28"
         >
           {children}
         </motion.main>
       </AnimatePresence>
-      <Footer />
+      {/* <Footer /> */}
       <FloatingNav />
     </>
   );
