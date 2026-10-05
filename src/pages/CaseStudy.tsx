@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { SectionHeader, PillTag, TextLink, Reveal } from "../components/ui";
-import { caseStudies, projects } from "../content";
+import { caseStudies, projects, ironmark } from "../content";
+import { Building, Factory, Home, Route } from "lucide-react";
 
 function DeviceMockup({ color, title }: { color: string; title: string }) {
   return (
@@ -20,6 +21,44 @@ function DeviceMockup({ color, title }: { color: string; title: string }) {
           </div>
         </div>
       </div>
+    </div>
+  );
+}
+
+function IronmarkCover() {
+  return (
+    <div className="rounded-panel overflow-hidden relative bg-navy" style={{ aspectRatio: "16/9" }}>
+      <svg viewBox="0 0 800 450" className="w-full h-full" aria-label="Ironmark Construction illustration">
+        {/* Background buildings */}
+        <rect x="50" y="200" width="80" height="250" fill="#34425f" />
+        <rect x="150" y="150" width="100" height="300" fill="#34425f" />
+        <rect x="270" y="180" width="90" height="270" fill="#34425f" />
+        <rect x="380" y="120" width="120" height="330" fill="#34425f" />
+        <rect x="520" y="160" width="95" height="290" fill="#34425f" />
+        <rect x="635" y="190" width="115" height="260" fill="#34425f" />
+
+        {/* Crane */}
+        <line x1="440" y1="50" x2="440" y2="120" stroke="#e8613c" strokeWidth="4" />
+        <line x1="380" y1="50" x2="500" y2="50" stroke="#e8613c" strokeWidth="3" />
+        <line x1="500" y1="50" x2="500" y2="80" stroke="#9ba5ba" strokeWidth="1" />
+
+        {/* Windows (small rectangles) */}
+        {[...Array(8)].map((_, i) => (
+          <rect key={`w1-${i}`} x={160 + (i % 4) * 20} y={170 + Math.floor(i / 4) * 40} width="12" height="16" fill="#9ba5ba" opacity="0.3" />
+        ))}
+        {[...Array(10)].map((_, i) => (
+          <rect key={`w2-${i}`} x={390 + (i % 5) * 20} y={140 + Math.floor(i / 5) * 40} width="12" height="16" fill="#9ba5ba" opacity="0.3" />
+        ))}
+
+        {/* Ground line */}
+        <line x1="0" y1="450" x2="800" y2="450" stroke="#9ba5ba" strokeWidth="2" />
+
+        {/* HUD labels */}
+        <text x="20" y="30" fill="#9ba5ba" fontSize="10" fontFamily="JetBrains Mono, monospace">IRONMARK GROUP</text>
+        <text x="20" y="44" fill="#9ba5ba" fontSize="10" fontFamily="JetBrains Mono, monospace">EST. 2000</text>
+        <text x="680" y="30" fill="#9ba5ba" fontSize="10" fontFamily="JetBrains Mono, monospace">480 PROJECTS</text>
+        <text x="680" y="440" fill="#9ba5ba" fontSize="10" fontFamily="JetBrains Mono, monospace">25+ YEARS</text>
+      </svg>
     </div>
   );
 }
@@ -107,6 +146,111 @@ function BarChart({ data, title }: { data: { category: string; value: number }[]
   );
 }
 
+function getServiceIcon(icon: string) {
+  switch (icon) {
+    case "building": return <Building size={24} strokeWidth={1.5} />;
+    case "factory": return <Factory size={24} strokeWidth={1.5} />;
+    case "home": return <Home size={24} strokeWidth={1.5} />;
+    case "bridge": return <Route size={24} strokeWidth={1.5} />;
+    default: return <Building size={24} strokeWidth={1.5} />;
+  }
+}
+
+function LivePreviewBox() {
+  return (
+    <div className="mt-12">
+      <SectionHeader number="07" name="Live preview" />
+      <div className="border border-line rounded-panel overflow-hidden">
+        <div className="bg-ink text-paper px-6 py-3 flex items-center justify-between">
+          <span className="font-mono text-[10px] uppercase tracking-[0.12em]">ironmark-construction-company.vercel.app</span>
+          <a
+            href={ironmark.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-mono text-[10px] uppercase tracking-[0.12em] text-accent hover:underline"
+          >
+            Open in new tab ↗
+          </a>
+        </div>
+        <div className="relative" style={{ height: "600px" }}>
+          <iframe
+            src={ironmark.liveUrl}
+            title="Ironmark Construction Group - Live Preview"
+            className="w-full h-full border-0"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function IronmarkServices() {
+  return (
+    <div className="mt-12">
+      <SectionHeader number="08" name="Service categories" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {ironmark.services.map((service) => (
+          <div key={service.title} className="border border-line rounded-card p-6 hover:bg-ink/[0.02] transition-colors duration-180">
+            <div className="text-ink mb-3">{getServiceIcon(service.icon)}</div>
+            <h3 className="font-serif text-2xl leading-[1.15] mb-2">{service.title}</h3>
+            <p className="text-sm text-muted">{service.blurb}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function IronmarkFeaturedProjects() {
+  return (
+    <div className="mt-12">
+      <SectionHeader number="09" name="Featured projects" />
+      <div className="space-y-0">
+        {ironmark.featuredProjects.map((project, i) => (
+          <div key={project.title} className="flex gap-6 py-4 border-t border-line">
+            <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.12em] text-accent shrink-0 pt-0.5 w-12">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-baseline gap-3 mb-1">
+                <h3 className="font-serif text-xl sm:text-2xl leading-[1.15]">{project.title}</h3>
+                <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-muted">{project.category}</span>
+              </div>
+              <p className="text-sm text-muted">{project.tagline}</p>
+            </div>
+            <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.12em] text-muted shrink-0">
+              {project.year}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function IronmarkValues() {
+  return (
+    <div className="mt-12 bg-navy rounded-panel p-8 sm:p-12">
+      <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.12em] text-navy-muted">
+        <span className="text-accent">10</span> — Company values
+      </span>
+      <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl leading-[1.05] tracking-[-0.02em] text-paper mt-4">
+        Built on{" "}
+        <em className="italic text-accent font-serif">early mornings</em> and straight answers.
+      </h2>
+      <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {ironmark.values.map((value) => (
+          <div key={value.label} className="border-t border-navy-line pt-4">
+            <div className="font-serif text-xl sm:text-2xl text-paper mb-2">{value.label}</div>
+            <p className="text-navy-muted text-sm">{value.sentence}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function CaseStudy() {
   const { slug } = useParams<{ slug: string }>();
   const study = caseStudies.find((c) => c.slug === slug);
@@ -154,7 +298,7 @@ export default function CaseStudy() {
       <div className="max-w-page mx-auto px-5 sm:px-6 lg:px-8">
         {/* Cover */}
         <Reveal>
-          <DeviceMockup color={data.panelColor} title={data.title} />
+          {slug === "ironmark-construction" ? <IronmarkCover /> : <DeviceMockup color={data.panelColor} title={data.title} />}
         </Reveal>
 
         {/* Meta */}
@@ -278,6 +422,24 @@ export default function CaseStudy() {
             </ul>
           </div>
         </Reveal>
+
+        {/* Ironmark-specific sections */}
+        {slug === "ironmark-construction" && (
+          <>
+            <Reveal delay={480}>
+              <LivePreviewBox />
+            </Reveal>
+            <Reveal delay={500}>
+              <IronmarkServices />
+            </Reveal>
+            <Reveal delay={520}>
+              <IronmarkFeaturedProjects />
+            </Reveal>
+            <Reveal delay={540}>
+              <IronmarkValues />
+            </Reveal>
+          </>
+        )}
 
         {/* Prev / Next */}
         <Reveal delay={500}>
