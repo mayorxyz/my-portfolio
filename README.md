@@ -187,7 +187,7 @@ export const personalInfo = {
 - **Inline SVG charts** — Line and bar charts with animations
 - **Architecture diagrams** — SVG node/edge graphs
 - **Form validation** — Client-side validation with success state
-- **Featured project showcases** — Ironmark Construction, Meridian Hospital, Nexus Workspace & Codex with custom sections (departments, doctors, services, values, features, testimonials, pricing, pipeline, decisions, limits, screens)
+- **Featured project showcases** — Ironmark Construction, Meridian Hospital, Nexus Workspace, Codex & Aetheris with custom sections (departments, doctors, services, values, features, testimonials, pricing, pipeline, decisions, limits, screens, live stats, technical pillars, ecosystem, tokenomics, governance)
 
 ## 🔧 Customization
 

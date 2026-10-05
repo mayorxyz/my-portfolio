@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { SectionHeader, PillTag, TextLink, Reveal } from "../components/ui";
-import { caseStudies, projects, ironmark, meridian, nexus, codex } from "../content";
-import { Building, Factory, Home, Route, Heart, Brain, Bone, Baby, HeartHandshake, Ribbon, Siren, ScanLine, LayoutGrid, BarChart3, ShieldCheck, Zap, Sparkles, PartyPopper, Search, Tags, ListTree, Copy, Moon, Download } from "lucide-react";
+import { caseStudies, projects, ironmark, meridian, nexus, codex, aetheris } from "../content";
+import { Building, Factory, Home, Route, Heart, Brain, Bone, Baby, HeartHandshake, Ribbon, Siren, ScanLine, LayoutGrid, BarChart3, ShieldCheck, Zap, Sparkles, PartyPopper, Search, Tags, ListTree, Copy, Moon, Download, Network, Shield, Layers } from "lucide-react";
 
 function DeviceMockup({ color, title }: { color: string; title: string }) {
   return (
@@ -802,6 +802,223 @@ function CodexScreens() {
   );
 }
 
+function AetherisCover() {
+  return (
+    <div className="rounded-panel overflow-hidden relative bg-ink" style={{ aspectRatio: "16/9" }}>
+      <svg viewBox="0 0 800 450" className="w-full h-full" aria-label="Aetheris blockchain network illustration">
+        <rect width="800" height="450" fill="#0a0a0a" />
+        
+        {/* Network mesh - nodes and connections */}
+        <g opacity="0.6">
+          {/* Connection lines */}
+          <line x1="200" y1="150" x2="350" y2="200" stroke="#e8613c" strokeWidth="0.5" opacity="0.4" />
+          <line x1="350" y1="200" x2="500" y2="150" stroke="#e8613c" strokeWidth="0.5" opacity="0.4" />
+          <line x1="500" y1="150" x2="600" y2="250" stroke="#e8613c" strokeWidth="0.5" opacity="0.4" />
+          <line x1="200" y1="150" x2="250" y2="300" stroke="#e8613c" strokeWidth="0.5" opacity="0.4" />
+          <line x1="350" y1="200" x2="400" y2="320" stroke="#e8613c" strokeWidth="0.5" opacity="0.4" />
+          <line x1="500" y1="150" x2="550" y2="300" stroke="#e8613c" strokeWidth="0.5" opacity="0.4" />
+          <line x1="600" y1="250" x2="550" y2="300" stroke="#e8613c" strokeWidth="0.5" opacity="0.4" />
+          <line x1="250" y1="300" x2="400" y2="320" stroke="#e8613c" strokeWidth="0.5" opacity="0.4" />
+          <line x1="400" y1="320" x2="550" y2="300" stroke="#e8613c" strokeWidth="0.5" opacity="0.4" />
+        </g>
+        
+        {/* Nodes */}
+        <circle cx="200" cy="150" r="6" fill="#e8613c" />
+        <circle cx="350" cy="200" r="8" fill="#e8613c" />
+        <circle cx="500" cy="150" r="6" fill="#e8613c" />
+        <circle cx="600" cy="250" r="7" fill="#e8613c" />
+        <circle cx="250" cy="300" r="5" fill="#e8613c" />
+        <circle cx="400" cy="320" r="9" fill="#e8613c" />
+        <circle cx="550" cy="300" r="6" fill="#e8613c" />
+        
+        {/* Glow effects */}
+        <circle cx="350" cy="200" r="12" fill="#e8613c" opacity="0.2" />
+        <circle cx="400" cy="320" r="14" fill="#e8613c" opacity="0.2" />
+        
+        {/* HUD elements */}
+        <g fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#6b6a64">
+          <text x="40" y="40">// signal received</text>
+          <text x="40" y="56">AETHERIS v1.0</text>
+          <text x="640" y="40">184,000 TPS</text>
+          <text x="640" y="56">0.8s FINALITY</text>
+          <text x="40" y="420">NODES: 4,210</text>
+          <text x="640" y="420">EPOCH: 214</text>
+        </g>
+        
+        {/* Manifesto lines */}
+        <g fontFamily="Instrument Serif, serif" fontSize="24" fill="#f1efe7" opacity="0.8">
+          <text x="400" y="100" textAnchor="middle">The chain</text>
+          <text x="400" y="130" textAnchor="middle">that doesn't</text>
+          <text x="400" y="160" textAnchor="middle" fill="#e8613c">wait.</text>
+        </g>
+      </svg>
+    </div>
+  );
+}
+
+function AetherisLivePreview() {
+  return (
+    <div className="mt-12">
+      <SectionHeader number="07" name="Live preview" />
+      <div className="border border-line rounded-panel overflow-hidden">
+        <div className="bg-ink text-paper px-6 py-3 flex items-center justify-between">
+          <span className="font-mono text-[10px] uppercase tracking-[0.12em]">aetheris-blockchain.vercel.app</span>
+          <a
+            href={aetheris.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-mono text-[10px] uppercase tracking-[0.12em] text-accent hover:underline"
+          >
+            Open in new tab ↗
+          </a>
+        </div>
+        <div className="relative" style={{ height: "600px" }}>
+          <iframe
+            src={aetheris.liveUrl}
+            title="Aetheris Blockchain - Live Preview"
+            className="w-full h-full border-0"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function AetherisStats() {
+  return (
+    <div className="mt-12">
+      <SectionHeader number="08" name="Live stats" />
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        {aetheris.liveStats.map((stat) => (
+          <div key={stat.label} className="border border-line rounded-card p-6">
+            <div className="font-serif text-4xl sm:text-5xl text-ink mb-2">{stat.value}</div>
+            <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-muted mb-1">{stat.label}</div>
+            <p className="text-xs text-muted">{stat.detail}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function AetherisPillars() {
+  const icons = [
+    <Layers size={32} strokeWidth={1.5} />,
+    <Shield size={32} strokeWidth={1.5} />,
+    <Network size={32} strokeWidth={1.5} />,
+  ];
+  
+  return (
+    <div className="mt-12">
+      <SectionHeader number="09" name="Technical pillars" />
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {aetheris.pillars.map((pillar, i) => (
+          <div key={pillar.title} className="border border-line rounded-card p-8 hover:bg-ink/[0.02] transition-colors duration-180">
+            <div className="text-ink mb-4">{icons[i]}</div>
+            <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-accent mb-2">{pillar.glyph}</div>
+            <h3 className="font-serif text-2xl leading-[1.15] mb-3">{pillar.title}</h3>
+            <p className="text-sm text-muted leading-relaxed">{pillar.line}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function AetherisEcosystem() {
+  return (
+    <div className="mt-12">
+      <SectionHeader number="10" name="Ecosystem projects" />
+      <div className="space-y-0">
+        {aetheris.ecosystem.map((project) => (
+          <div key={project.name} className="flex items-center gap-6 py-4 border-t border-line">
+            <div className="flex-1 min-w-0">
+              <div className="flex items-baseline gap-3 mb-1">
+                <h3 className="font-serif text-xl sm:text-2xl leading-[1.15]">{project.name}</h3>
+                <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-muted">{project.category}</span>
+              </div>
+              <p className="text-sm text-muted">{project.line}</p>
+            </div>
+            <span className={`font-mono text-[10px] uppercase tracking-[0.12em] px-3 py-1 rounded-pill border ${
+              project.status === "Live" ? "text-green-600 border-green-600" :
+              project.status === "Beta" ? "text-accent border-accent" :
+              "text-muted border-line"
+            }`}>
+              {project.status}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function AetherisGovernance() {
+  return (
+    <div className="mt-12 bg-navy rounded-panel p-8 sm:p-12">
+      <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.12em] text-navy-muted">
+        <span className="text-accent">11</span> — Governance
+      </span>
+      <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl leading-[1.05] tracking-[-0.02em] text-paper mt-4">
+        The network votes.{" "}
+        <em className="italic text-accent font-serif">You count.</em>
+      </h2>
+      <div className="mt-8 space-y-0">
+        {aetheris.governance.map((proposal) => (
+          <div key={proposal.id} className="flex flex-col sm:flex-row sm:items-center gap-4 py-4 border-t border-navy-line">
+            <div className="flex-1 min-w-0">
+              <div className="flex items-baseline gap-3 mb-1">
+                <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-accent">{proposal.id}</span>
+                <h3 className="font-serif text-lg sm:text-xl leading-[1.15] text-paper">{proposal.title}</h3>
+              </div>
+              <div className="flex items-center gap-4 mt-2">
+                <span className="text-sm text-navy-muted">For: {proposal.for}%</span>
+                <span className="text-sm text-navy-muted">Against: {proposal.against}%</span>
+              </div>
+            </div>
+            <span className={`font-mono text-[10px] uppercase tracking-[0.12em] px-3 py-1 rounded-pill border ${
+              proposal.status === "Voting" ? "text-accent border-accent" :
+              proposal.status === "Passed" ? "text-green-400 border-green-400" :
+              proposal.status === "Executed" ? "text-paper border-paper" :
+              "text-navy-muted border-navy-line"
+            }`}>
+              {proposal.status}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function AetherisTokenomics() {
+  return (
+    <div className="mt-12">
+      <SectionHeader number="12" name="Tokenomics" />
+      <div className="border border-line rounded-card p-8">
+        <div className="font-serif text-3xl sm:text-4xl text-ink mb-2">{aetheris.tokenomics.total}</div>
+        <p className="text-sm text-muted mb-6">Fixed genesis supply. Declining emission. Fees that burn.</p>
+        <div className="space-y-3">
+          {aetheris.tokenomics.allocation.map((item) => (
+            <div key={item.label} className="flex items-center gap-4">
+              <div className="flex-1">
+                <div className="flex justify-between items-baseline mb-1">
+                  <span className="text-sm text-ink">{item.label}</span>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-accent">{item.pct}%</span>
+                </div>
+                <div className="h-1 bg-line rounded-full overflow-hidden">
+                  <div className="h-full bg-accent rounded-full" style={{ width: `${item.pct}%` }} />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function CaseStudy() {
   const { slug } = useParams<{ slug: string }>();
   const study = caseStudies.find((c) => c.slug === slug);
@@ -849,7 +1066,7 @@ export default function CaseStudy() {
       <div className="max-w-page mx-auto px-5 sm:px-6 lg:px-8">
         {/* Cover */}
         <Reveal>
-          {slug === "ironmark-construction" ? <IronmarkCover /> : slug === "meridian-hospital" ? <MeridianCover /> : slug === "nexus-workspace" ? <NexusCover /> : slug === "codex" ? <CodexCover /> : <DeviceMockup color={data.panelColor} title={data.title} />}
+          {slug === "ironmark-construction" ? <IronmarkCover /> : slug === "meridian-hospital" ? <MeridianCover /> : slug === "nexus-workspace" ? <NexusCover /> : slug === "codex" ? <CodexCover /> : slug === "aetheris" ? <AetherisCover /> : <DeviceMockup color={data.panelColor} title={data.title} />}
         </Reveal>
 
         {/* Meta */}
@@ -1054,6 +1271,30 @@ export default function CaseStudy() {
             </Reveal>
             <Reveal delay={580}>
               <CodexScreens />
+            </Reveal>
+          </>
+        )}
+
+        {/* Aetheris-specific sections */}
+        {slug === "aetheris" && (
+          <>
+            <Reveal delay={480}>
+              <AetherisLivePreview />
+            </Reveal>
+            <Reveal delay={500}>
+              <AetherisStats />
+            </Reveal>
+            <Reveal delay={520}>
+              <AetherisPillars />
+            </Reveal>
+            <Reveal delay={540}>
+              <AetherisEcosystem />
+            </Reveal>
+            <Reveal delay={560}>
+              <AetherisTokenomics />
+            </Reveal>
+            <Reveal delay={580}>
+              <AetherisGovernance />
             </Reveal>
           </>
         )}
