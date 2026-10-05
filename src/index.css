@@ -3,7 +3,7 @@
 @theme {
   --color-paper: #f1efe7;
   --color-ink: #141414;
-  --color-muted: #6b6a64;
+  --color-muted: #5a5954; /* darkened for WCAG AA 4.5:1 on paper */
   --color-line: #d8d5ca;
   --color-accent: #e8613c;
   --color-navy: #1d2b47;
@@ -18,13 +18,19 @@
   --font-sans: "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
-  --radius-pill: 999px;
+  /* Two radii only: large for panels/cards, small for everything else */
+  --radius-lg: 28px;
+  --radius-sm: 12px;
+
+  /* Aliases — map to the two radii */
   --radius-panel: 28px;
   --radius-card: 24px;
   --radius-media: 16px;
+  --radius-pill: 999px;
 
   --shadow-float: 0 8px 30px rgba(20, 20, 20, 0.12);
   --shadow-device: 0 30px 60px -20px rgba(0, 0, 0, 0.25);
+  --shadow-lift: 0 12px 32px rgba(20, 20, 20, 0.10);
 
   --max-width-page: 1280px;
 }
@@ -47,8 +53,57 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
+  position: relative;
 }
 
+/* Subtle paper texture */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(20, 20, 20, 0.03) 1px, transparent 0);
+  background-size: 24px 24px;
+  opacity: 0.4;
+}
+
+body > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Keyframes for hero animation */
+@keyframes float1 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes float2 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+@keyframes orbit-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-float1 {
+  animation: float1 15s ease-in-out infinite;
+}
+
+.animate-float2 {
+  animation: float2 18s ease-in-out infinite;
+}
+
+.animate-orbit {
+  animation: orbit-spin 20s linear infinite;
+  transform-origin: 400px 210px;
+}
+
+/* Reduced motion: disable all animations */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -57,5 +112,10 @@ body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+  .animate-float1,
+  .animate-float2,
+  .animate-orbit {
+    animation: none !important;
   }
 }

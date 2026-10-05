@@ -4,25 +4,38 @@ import { motion, AnimatePresence } from "framer-motion";
 import { personalInfo } from "../content";
 
 export function Header() {
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+
   return (
-    <header className="border-b border-line">
-      <div className="max-w-page mx-auto px-5 sm:px-6 lg:px-8 py-6 flex items-start justify-between">
+    <header className="border-b border-line sticky top-0 bg-paper/95 backdrop-blur-sm z-20">
+      <div className="max-w-page mx-auto px-5 sm:px-6 lg:px-8 py-4 sm:py-6 flex items-start justify-between gap-4">
         <div>
-          <div className="font-serif text-xl">{personalInfo.name}</div>
-          <div className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.12em] text-muted mt-1">
+          <Link to="/" className="font-serif text-xl hover:text-accent transition-colors duration-200">{personalInfo.name}</Link>
+          <div className="font-mono text-[12px] uppercase tracking-[0.12em] text-muted mt-1">
             {personalInfo.role}
           </div>
         </div>
-        <div className="hidden sm:block text-center">
-          <div className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.12em] text-muted">
+        <div className="hidden md:flex flex-col items-center text-center">
+          <div className="font-mono text-[12px] uppercase tracking-[0.12em] text-muted">
             {personalInfo.location}
           </div>
-          <div className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.12em] text-muted mt-1">
+          <div className="font-mono text-[12px] uppercase tracking-[0.12em] text-muted mt-1">
             Updated {personalInfo.updated}
           </div>
         </div>
-        <div className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.12em] text-muted text-right">
-          {personalInfo.status}
+        <div className="flex items-center gap-4">
+          <div className="hidden sm:block font-mono text-[12px] uppercase tracking-[0.12em] text-muted text-right">
+            {personalInfo.status}
+          </div>
+          {isHome ? null : (
+            <Link
+              to="/contact"
+              className="hidden md:inline-flex items-center h-10 px-4 rounded-pill bg-ink text-paper font-sans text-sm font-medium hover:bg-ink/85 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+            >
+              Book a conversation
+            </Link>
+          )}
         </div>
       </div>
     </header>
@@ -100,6 +113,49 @@ export function SkipLink() {
   );
 }
 
+function SectionIndicator() {
+  const [current, setCurrent] = useState<{ number: string; name: string } | null>(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname !== "/") {
+      setCurrent(null);
+      return;
+    }
+    const sections = [
+      { id: "apps", number: "02", name: "Apps" },
+      { id: "work", number: "03", name: "Work" },
+      { id: "capabilities", number: "04", name: "Capabilities" },
+      { id: "contact", number: "05", name: "Contact" },
+    ];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) {
+          const section = sections.find((s) => s.id === visible.target.id);
+          if (section) setCurrent({ number: section.number, name: section.name });
+        }
+      },
+      { threshold: [0.2, 0.5] }
+    );
+    sections.forEach((s) => {
+      const el = document.getElementById(s.id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, [location.pathname]);
+
+  if (!current) return null;
+
+  return (
+    <div className="fixed top-24 right-4 sm:right-8 z-10 font-mono text-[12px] uppercase tracking-[0.12em] text-muted pointer-events-none">
+      <span className="text-accent">{current.number}</span> — {current.name}
+    </div>
+  );
+}
+
 export function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
 
@@ -107,6 +163,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
     <>
       <SkipLink />
       <Header />
+      <SectionIndicator />
       <AnimatePresence mode="wait">
         <motion.main
           key={location.pathname}

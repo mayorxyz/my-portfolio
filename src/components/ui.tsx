@@ -12,11 +12,11 @@ interface SectionHeaderProps {
 export function SectionHeader({ number, name, meta, dark }: SectionHeaderProps) {
   return (
     <div className={`flex justify-between items-end border-b pb-3 mb-12 ${dark ? "border-navy-line" : "border-line"}`}>
-      <span className={`font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.12em] ${dark ? "text-navy-muted" : "text-muted"}`}>
+      <span className={`font-mono text-[12px] uppercase tracking-[0.12em] ${dark ? "text-navy-muted" : "text-muted"}`}>
         <span className="text-accent font-normal">{number}</span> — {name}
       </span>
       {meta && (
-        <span className={`font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.12em] ${dark ? "text-navy-muted" : "text-muted"}`}>
+        <span className={`font-mono text-[12px] uppercase tracking-[0.12em] ${dark ? "text-navy-muted" : "text-muted"}`}>
           {meta}
         </span>
       )}
@@ -85,7 +85,7 @@ export function TextLink({ href, to, children, className = "" }: TextLinkProps) 
 // ─── Pill Tag ────────────────────────────────────────────
 export function PillTag({ children, dark }: { children: ReactNode; dark?: boolean }) {
   return (
-    <span className={`inline-flex items-center h-[26px] px-2.5 rounded-pill border font-mono text-[10px] uppercase tracking-[0.12em] transition-colors duration-180 hover:text-ink hover:border-ink ${dark ? "border-navy-line text-navy-muted hover:text-paper hover:border-paper" : "border-line text-muted"}`}>
+    <span className={`inline-flex items-center h-[28px] px-3 rounded-pill border font-mono text-[12px] uppercase tracking-[0.12em] transition-colors duration-200 hover:text-ink hover:border-ink ${dark ? "border-navy-line text-navy-muted hover:text-paper hover:border-paper" : "border-line text-muted"}`}>
       {children}
     </span>
   );
@@ -115,12 +115,20 @@ function ArrowIcon() {
 export function Reveal({ children, className = "", delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReducedMotion(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
+    mq.addEventListener?.("change", handler);
+    return () => mq.removeEventListener?.("change", handler);
+  }, []);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReduced) {
+    if (reducedMotion) {
       setVisible(true);
       return;
     }
@@ -135,7 +143,11 @@ export function Reveal({ children, className = "", delay = 0 }: { children: Reac
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [reducedMotion]);
+
+  if (reducedMotion) {
+    return <div className={className}>{children}</div>;
+  }
 
   return (
     <div
